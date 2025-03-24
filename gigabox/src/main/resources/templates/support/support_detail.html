@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="notice-detail">
+    <div class="center flex">
+        <div class="boardlist">
+            <div class="support-list">
+                <div class="list-title">
+                    <a th:href="@{/support/home}">
+                        <p>고객센터</p>
+                    </a>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><a th:href="@{/support/home}">
+                            <p>고객센터 홈</p>
+                        </a></li>
+                        <li><a th:href="@{/faq}">
+                            <p>자주 묻는 질문</p>
+                        </a></li>
+                        <li><a th:href="@{/support/support_list}">
+                            <p>공지사항<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+                        </a></li>
+                        <li><a th:href="@{/qna/create}">
+                            <p>1:1 문의</p>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="list-info">
+                    <p>기가박스 고객센터</p>
+                    <span>Dream center</span>
+                    <p><i><img th:src="@{/img/clock.png}"></i>10:00 ~ 19:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="notice-detail-cont">
+            <h1>공지사항</h1>
+            <table>
+                <tr>
+                    <td>
+                        <h3 th:text="${board.subject}"></h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>구분</b><span th:text="${board.boardtype}"></span><i>|</i>
+                    <b>이벤트</b><p th:text="${board.createDate}"></p></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p th:utext="${board.content}"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="noticebtn">
+                        <button type="button" onclick="location.href='/support/support_list'">목록</button>
+                        <a th:href="@{|/support/modify/${id}|}" th:text="수정"></a>
+                        <a href="javascript:void(0)" th:data-uri="@{|/support/delete/${id}|}" class="delete" th:text="삭제"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script layout:fragment="script" type="text/javascript">
+    const delete_elements = document.getElementsByClassName("delete");
+
+    Array.from(delete_elements).forEach(function(element){
+        element.addEventListener('click', function(){
+        if(confirm("정말 삭제하시겠습니까?")){
+            location.href = this.dataset.uri;
+        };
+    });
+   });
+</script>
+</body>
+</html>

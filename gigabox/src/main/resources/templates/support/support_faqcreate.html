@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="notice-write">
+  <div class="center flex">
+    <div class="boardlist">
+      <div class="support-list">
+        <div class="list-title">
+          <a th:href="@{/support/home}">
+            <p>고객센터</p>
+          </a>
+        </div>
+        <div class="list">
+          <ul>
+            <li><a th:href="@{/support/home}">
+              <p>고객센터 홈</p>
+            </a></li>
+            <li><a th:href="@{/faq}">
+              <p>자주 묻는 질문</p>
+            </a></li>
+            <li><a th:href="@{/support/support_list}">
+              <p>공지사항</p>
+            </a></li>
+            <li><a th:href="@{/qna/create}">
+              <p>1:1 문의</p>
+            </a></li>
+          </ul>
+        </div>
+        <div class="list-info">
+          <p>기가박스 고객센터</p>
+          <span>Dream center</span>
+          <p><i><img th:src="@{/img/clock.png}"></i>10:00 ~ 19:00</p>
+        </div>
+      </div>
+    </div>
+    <div class="notice-write-form">
+    <h2>공지사항 작성</h2>
+    <form th:object="${faqForm}" method="post">
+      <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}">
+      <table>
+        <tr>
+          <th>구분</th>
+          <td>
+            <select name="category" th:field="*{category}">
+              <option value="전체" th:selected="${faqForm.category == '전체'}">전체</option>
+              <option value="영화예매" th:selected="${faqForm.category == '영화예매'}">영화예매</option>
+              <option value="결제/관람권" th:selected="${faqForm.category == '결제/관람권'}">결제/관람권</option>
+              <option value="극장" th:selected="${faqForm.category == '극장'}">극장</option>
+              <option value="스토어" th:selected="${faqForm.category == '스토어'}">스토어</option>
+              <option value="홈페이지/모바일" th:selected="${faqForm.category == '홈페이지/모바일'}">홈페이지/모바일</option>
+            </select>
+            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" role="alert"></div>
+          </td>
+        </tr>
+        <tr>
+          <th>질문</th>
+          <td>
+            <input type="text" name="question" th:field="*{question}" placeholder="질문을 입력해 주세요.">
+            <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}" role="alert"></div>
+          </td>
+        </tr>
+        <tr>
+          <th>제목</th>
+          <td>
+            <input type="text" name="answer" th:field="*{answer}" placeholder="답변을 입력해 주세요.">
+            <div th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}" role="alert"></div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="writeBtns">
+            <input type="submit" value="등록">
+            <input type="button" onclick="location.href='/support/support_list'" value="목록">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  </div>
+</div>
+</body>
+</html>

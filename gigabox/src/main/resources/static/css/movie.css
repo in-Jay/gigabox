@@ -1,0 +1,618 @@
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+* {margin: 0; padding: 0; box-sizing: border-box;}
+li { list-style: none;}
+a {text-decoration: none;}
+body { width: 100%; font-family: 'Pretendard-Regular';}
+
+.flex-row {
+    display:flex;
+    flex-flow:row nowrap;
+}
+.movie-wrap {
+    width: 100%;
+    height: 100%;
+}
+.movie-wrap .center {
+    height: 100%;
+    margin: 0 auto;
+    padding: 82px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.movie .center .movie-list {
+    width: 100%;
+}
+
+.movie .movie-box {
+    margin-top: 26px;
+}
+
+.movie .movie-box-util {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px 10px;
+}
+.movie .movie-box-util p {
+    font-weight: 300;
+}
+.movie .movie-box-util p span {
+    font-weight: 500;
+    font-size: 17px;
+}
+.movie .input-box {
+    width: 230px;
+    height: 36px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+.movie .input-box input {
+    width: 197px;
+    height: 34px;
+    padding: 0 10px;
+    border: none;
+    background-color: transparent;
+}
+.movie .input-box input:focus {
+    outline: none;
+}
+.movie .input-box button {
+    display: block;
+    width: 30px;
+    height: 32px;
+    align-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.movie .input-box button img {
+    width: 20px;
+    height: 20px;
+}
+.movie .movie-list ul {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 60px;
+}
+.movie .movie-list ul li {
+    width: 230px;
+    height: 450px;
+}
+.movie .movie-list ul li .movie-info {
+    width: 100%;
+    height: 331px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.movie .movie-list ul li .movie-info .rank {
+    position: absolute;
+    padding: 8px 0 0 10px;
+    color: #fff;
+    font-size: 30px;
+    font-style: italic;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+.movie .movie-list ul li .movie-info img {
+    width: 100%;
+    height: 100%;
+}
+.movie .movie-list ul li .movie-info .story {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    font-size: 15px;
+    line-height: 22px;
+    color: #fff;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity 0.3s
+}
+.movie .movie-list ul li .movie-info .story p {
+     display: -webkit-box;           /* flexbox 모델을 사용 */
+            -webkit-box-orient: vertical;   /* 세로 방향으로 배치 */
+            -webkit-line-clamp: 7;          /* 두 줄만 보여주고 그 이후는 '...'으로 생략 */
+            overflow: hidden;               /* 넘치는 부분 숨기기 */
+            text-overflow: ellipsis;        /* 생략 표시 */
+}
+.movie .movie-list ul li .movie-info:hover .story {
+    opacity: 1;
+    transition: opacity 0.3s
+}
+
+.movie .movie-list ul li .age-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.movie .movie-list ul li .age-title .age {
+    width: 23px;
+    height: 23px;
+    flex-shrink: 0;
+    font-size: 0;
+}
+.movie .movie-list ul li .age-title .title {
+    padding-left: 7px;
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.movie .movie-list ul li .rate-date {
+    width: 100%;
+    padding-top: 10px;
+}
+.movie .movie-list ul li .rate-date span {
+    font-size: 15px;
+    color: #444;
+}
+.movie .movie-list ul li .rate-date .rate {
+    margin-right: 7px;
+}
+.movie .movie-list ul li .rate-date .rate:after {
+    content: "|";
+    padding-left: 8px;
+    color: #ccc;
+}
+.movie .movie-list ul li .btn-box {
+    width: 100%;
+    height: 36px;
+    margin-top: 10px;
+    display: flex;
+}
+.movie .movie-list ul li .btn-box .like-btn {
+    width: 72px;
+    height: 36px;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.movie .movie-list ul li .btn-box .like-btn:hover {
+    background-color: #ebebeb;
+}
+.movie .movie-list ul li .btn-box .like-btn .like-img {
+    position: relative;
+    width: 17px;
+    height: 15px;
+    margin-right: 4px;
+    overflow: hidden;
+}
+.movie .movie-list ul li .btn-box .like-btn .like-img img {
+    position: absolute;
+    left: 0;
+}
+.movie .movie-list ul li .btn-box .like-btn .like-img img.toggle {
+    left: -100%;
+}
+.movie .movie-list ul li .btn-box .res-btn {
+    width: 153px;
+    height: 36px;
+    margin-left: 5px;
+    border: 1px solid #503396;
+    border-radius: 4px;
+    text-align: center;
+    overflow: hidden;
+}
+.movie .movie-list ul li .btn-box .res-btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #503396;
+    color: #fff;
+    border: none;
+    align-content: center;
+}
+
+.movieDetail .movie-page {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    background: -webkit-linear-gradient(left, #0f0f0f 20%, rgba(15, 15, 15, 0) 50%, #0f0f0f 80%);
+    background: linear-gradient(to right, #0f0f0f 20%, rgba(15, 15, 15, 0) 50%, #0f0f0f 80%);
+    margin-bottom: 40px;
+}
+.movieDetail .movie-page .center {
+    position: relative;
+    padding: 0;
+    padding-top: 55px;
+    overflow: hidden;
+}
+.movieDetail .movie-page .bg-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(left, #0f0f0f 20%, rgba(15, 15, 15, 0) 50%, #0f0f0f 80%);
+    background: linear-gradient(to right, #0f0f0f 20%, rgba(15, 15, 15, 0) 50%, #0f0f0f 80%);
+    z-index: 4;
+}
+.movieDetail .movie-page .center .movie-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.movieDetail .movie-cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    color: #fff;
+    z-index: 5;
+}
+.movieDetail .movie-cont .title {
+    font-size: 47px;
+}
+.movieDetail .movie-cont .d-title {
+    padding-top: 10px;
+    font-size: 20px;
+}
+.movieDetail .movie-cont .btn-box {
+    display: flex;
+    padding-top: 15px;
+}
+.movieDetail .movie-cont .btn-box .like-btn {
+    width: 100px;
+    height: 36px;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.movieDetail .movie-cont .btn-box .like-btn .like-img {
+    width: 17px;
+    height: 15px;
+    margin-right: 4px;
+}
+.movieDetail .movie-cont .btn-box .like-btn .like-img img {
+    width: 100%;
+    height: 100%;
+}
+.movieDetail .movie-cont .btn-box .like-btn:hover {
+    background-color: #fff;
+    color: #333;
+}
+.movieDetail .movie-cont .btn-box .like-btn:hover .like-img img {
+    content: url(/img/heart-color.png);
+}
+
+.movieDetail .movie-cont .btn-box .share-btn {
+    width: 100px;
+    height: 36px;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.movieDetail .movie-cont .btn-box .share-btn .share-img {
+    width: 17px;
+    height: 17px;
+    margin-right: 4px;
+}
+.movieDetail .movie-cont .btn-box .share-btn .share-img img {
+    width: 100%;
+    height: 100%;
+}
+.movieDetail .movie-cont .btn-box .share-btn:hover {
+    background-color: #fff;
+    color: #333;
+}
+.movieDetail .movie-cont .btn-box .share-btn:hover .share-img img {
+    content: url(/img/share-color.png);
+}
+
+.movieDetail .movie-cont .cont-bottom {
+    height: 65.59px;
+    display: flex;
+    margin-bottom: 45px;
+}
+.movieDetail .movie-cont .cont-bottom div > p {
+    padding-bottom: 15px;
+}
+.movieDetail .movie-cont .cont-bottom .gpa {
+    height: 100%;
+}
+.movieDetail .movie-cont .cont-bottom .gpa2 {
+    display: flex;
+    align-items: center;
+}
+.movieDetail .movie-cont .cont-bottom .gpa2 i {
+    width: 25px;
+    height: 25px;
+}
+.movieDetail .movie-cont .cont-bottom .gpa2 i img {
+    width: 100%;
+    height: 100%;
+}
+.movieDetail .movie-cont .cont-bottom .gpa2 span {
+    color: #59bec9;
+    font-size: 30px;
+    padding-left: 10px;
+}
+.movieDetail .movie-cont .cont-bottom .rating {
+    height: 100%;
+    padding-left: 35px;
+}
+.movieDetail .movie-cont .cont-bottom .rating .rank-rate {
+    display: flex;
+    align-items: end;
+}
+.movieDetail .movie-cont .cont-bottom .rank-rate i {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 5px;
+}
+.movieDetail .movie-cont .cont-bottom .rank-rate i img {
+    width: 100%;
+    height: 100%;
+}
+.movieDetail .movie-cont .cont-bottom .rank-rate .rank {
+    font-size: 30px;
+    padding-left: 5px;
+    padding-bottom: 0;
+}
+.movieDetail .movie-cont .cont-bottom .rank-rate .rate {
+    padding-bottom: 5px;
+    padding-left: 4px;
+}
+
+.movieDetail .img-cont {
+    z-index: 5;
+}
+.movieDetail .img-cont .movie-img {
+    position: relative;
+    width: 260px;
+    height: 374px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.movieDetail .img-cont .movie-img img {
+    width: 100%;
+    height: 100%;
+}
+.movieDetail .img-cont .movie-img i {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    bottom: 9px;
+    right: 9px;
+    font-size: 0;
+}
+.movieDetail .img-cont .res {
+    width: 260px;
+    height: 46px;
+    margin-bottom: 45px;
+}
+.movieDetail .img-cont .res button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #329eb1;
+    cursor: pointer;
+}
+.movieDetail .img-cont .res button a {
+    color: #fff;
+}
+
+.movieDetail .center {
+    padding: 0;
+    margin-bottom: 80px;
+}
+.movieDetail .desc {
+    display: block;
+}
+.movieDetail .center .detail-list {
+    width: 100%;
+    height: 42px;
+}
+.movieDetail .center .detail-list ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.movieDetail .center .detail-list ul li {
+    width: 366.67px;
+    height: 100%;
+    text-align: center;
+    align-center: center;
+}
+.movieDetail .center .story {
+    width: 100%;
+    line-height: 1.5;
+    margin-top: 20px;
+    color: #444;
+    font-weight: 100;
+}
+.movieDetail .center .story:first-line {
+    font-size: 33px;
+    font-weight: 500;
+    padding-bottom: 2px;
+    color: #222;
+}
+.movieDetail .center .info-box {
+    width: 100%;
+    padding: 30px 0;
+    margin-top: 70px;
+    color: #444;
+    font-weight: 100;
+}
+.movieDetail .center .info-box .info {
+    display: flex;
+}
+.movieDetail .center .info-box .info div {
+    display: flex;
+}
+.movieDetail .center .info-box .info div:after {
+   content: "|";
+   width: 1px;
+   margin-left: -15px;
+   padding-right: 15px;
+   color: #ccc;
+}
+.movieDetail .center .info-box .info p:after {
+    content: "|";
+    padding: 0 15px;
+    color: #ccc;
+}
+.movieDetail .center .info-box .info p:last-child:after {
+    content:"";
+}
+.movieDetail .center .short-review .review-count {
+    font-size: 25px;
+    color: #503396;
+    margin-bottom: 15px;
+    margin-top: 70px;
+}
+.movieDetail .center .short-review .review-count .count {
+    color: #01738b;
+}
+.movieDetail .center .short-review .review-area {
+    width: 1100px;
+    height: 84px;
+    display: flex;
+}
+.movieDetail .center .short-review .review-area .mega-profile {
+    width: 105px;
+    height: 75.4px;
+    align-content: center;
+    text-align: center;
+}
+.movieDetail .center .short-review .review-area .mega-profile img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+.movieDetail .center .short-review .review-area .mega-profile p {
+    font-size: 15px;
+    font-weight: 100;
+}
+.movieDetail .center .short-review .review-in-area {
+    width: 995px;
+    height: 84px;
+    border: 1px solid #eaeaea;
+    border-radius: 0 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: #666;
+}
+.movieDetail .center .short-review .review-area input {
+    width: 850px;
+    height: 100%;
+    border: none;
+    padding-left: 30px;
+}
+.movieDetail .center .short-review .review-area input:focus {
+    outline: none;
+}
+.movieDetail .center .short-review .review-area button {
+    width: 143.67px;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.movieDetail .center .short-review .review-area button i {
+    margin-right: 5px;
+}
+.movieDetail .center .short-review .review-area button span {
+    padding-bottom: 5px;
+}
+.movieDetail .center .short-review .review-box ul li {
+    position: relative;
+    width: 1100px;
+    height: 109.4px;
+    margin-top: 20px;
+    display: flex;
+}
+.movieDetail .center .short-review .review-box .user-profile {
+    width: 105px;
+    height: 75.4px;
+    align-content: center;
+    text-align: center;
+}
+.movieDetail .center .short-review .review-box .user-profile img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+.movieDetail .center .short-review .review-box .user-profile p {
+    font-size: 15px;
+    font-weight: 100;
+}
+.movieDetail .center .short-review .review-box ul li .review-in-box {
+    width: 995px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    background-color: #f8f8fa;
+    border-radius: 0 10px 10px 10px;
+}
+.movieDetail .center .short-review .review-box ul li .review-title {
+    width: 105px;
+    height: 100%;
+    color: #503396;
+    text-align: center;
+    align-content: center;
+}
+.movieDetail .center .short-review .review-box ul li .review-cont {
+    width: 850px;
+    height: 100%;
+    color: #888;
+    display: flex;
+    align-items: center;
+}
+.movieDetail .center .short-review .review-box ul li .review-cont:before {
+    display: block;
+    content: "";
+    border-left: 1px solid #ddd;
+    height: 50px;
+}
+.movieDetail .center .short-review .review-box ul li .review-cont p {
+    font-size: 14px;
+    padding: 0 20px 0 30px;
+}
+.movieDetail .center .short-review .review-box ul li .review-util {
+    width: 40px;
+    height: 100%;
+    align-content: center;
+}
+.movieDetail .center .short-review .review-box ul li .createDate {
+    position: absolute;
+    font-size: 14px;
+    top: 90px;
+    right: 0;
+    color: #666;
+}
+

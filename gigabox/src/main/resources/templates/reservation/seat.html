@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="seat-book">
+        <section class="center">
+            <div class="reservationOuter">
+                <div class="seat-wrap">
+                    <h2>빠른예매</h2>
+                    <div class="seat_header">
+                        <div class="seat_title"><h3>관람인원 선택</h3></div>
+                        <div class="seat_select">
+                            <div id="movie_container">
+
+
+                                <div class="reservation-inner flex">
+
+                                    <div class="number-input flex">
+                                        <label for="adultCount">성인</label>
+                                        <button class="btn-decrease">-</button>
+                                        <input type="number" id="adultCount" min="0" value="0">
+                                        <button class="btn-increase">+</button>
+                                    </div>
+
+
+
+                                    <div class="number-input flex">
+                                        <label for="youthCount">청소년</label>
+                                        <button class="btn-decrease2">-</button>
+                                        <input type="number" id="youthCount" min="0" value="0">
+                                        <button class="btn-increase2">+</button>
+                                    </div>
+                                </div>
+
+
+                                <div class="seatContainer">
+                                    <div class="screen"></div>
+                                    <div class="row">
+                                        <span class="seat_colBlank"></span>
+                                        <span class="seat_colNo">1</span>
+                                        <span class="seat_colNo">2</span>
+                                        <span class="blank"></span>
+                                        <span class="seat_colNo">3</span>
+                                        <span class="seat_colNo">4</span>
+                                        <span class="seat_colNo">5</span>
+                                        <span class="blank"></span>
+                                        <span class="seat_colNo">6</span>
+                                        <span class="seat_colNo">7</span>
+                                        <span class="seat_colNo">8</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="seat_rowNo">A</span>
+                                        <span class="seat" data-seat="A1"></span>
+                                        <span class="seat" data-seat="A2"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="A3"></span>
+                                        <span class="seat" data-seat="A4"></span>
+                                        <span class="seat" data-seat="A5"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="A6"></span>
+                                        <span class="seat" data-seat="A7"></span>
+                                        <span class="seat" data-seat="A8"></span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="seat_rowNo">B</span>
+                                        <span class="seat" data-seat="B1"></span>
+                                        <span class="seat" data-seat="B2"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="B3"></span>
+                                        <span class="seat" data-seat="B4"></span>
+                                        <span class="seat" data-seat="B5"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="B6"></span>
+                                        <span class="seat" data-seat="B7"></span>
+                                        <span class="seat" data-seat="B8"></span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="seat_rowNo">C</span>
+                                        <span class="seat" data-seat="C1"></span>
+                                        <span class="seat" data-seat="C2"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="C3"></span>
+                                        <span class="seat" data-seat="C4"></span>
+                                        <span class="seat" data-seat="C5"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="C6"></span>
+                                        <span class="seat" data-seat="C7"></span>
+                                        <span class="seat" data-seat="C8"></span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="seat_rowNo">D</span>
+                                        <span class="seat" data-seat="D1"></span>
+                                        <span class="seat" data-seat="D2"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="D3"></span>
+                                        <span class="seat" data-seat="D4"></span>
+                                        <span class="seat" data-seat="D5"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="D6"></span>
+                                        <span class="seat" data-seat="D7"></span>
+                                        <span class="seat" data-seat="D8"></span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="seat_rowNo">E</span>
+                                        <span class="seat" data-seat="E1"></span>
+                                        <span class="seat" data-seat="E2"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="E3"></span>
+                                        <span class="seat" data-seat="E4"></span>
+                                        <span class="seat" data-seat="E5"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="E6"></span>
+                                        <span class="seat" data-seat="E7"></span>
+                                        <span class="seat" data-seat="E8"></span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="seat_rowNo">F</span>
+                                        <span class="seat" data-seat="F1"></span>
+                                        <span class="seat" data-seat="F2"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="F3"></span>
+                                        <span class="seat" data-seat="F4"></span>
+                                        <span class="seat" data-seat="F5"></span>
+                                        <span class="blank"></span>
+                                        <span class="seat" data-seat="F6"></span>
+                                        <span class="seat" data-seat="F7"></span>
+                                        <span class="seat" data-seat="F8"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="totalreservation">
+                    <div id="reservationDetails2"></div>
+                    <div class="seat-state">
+                        <ul class="showcase">
+                            <li>
+                                <div class="availableSeat"></div>
+                                <small class="small">예매 가능</small>
+                            </li>
+                            <li>
+                                <div class="selectedSeatIcon"></div>
+                                <small class="small">선택한 좌석</small>
+                            </li>
+                            <li>
+                                <div class="occupiedSeatIcon"></div>
+                                <small class="small">예매 불가</small>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="seat-btn">
+                        <input type="hidden" id="selectedSeats" name="selectedSeats" value="">
+                        <button type="button">이전</button>
+                        <button type="button" id="submitSeats">좌석 선택 완료</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+</div>
+<script layout:fragment="script" type="text/javascript">
+    function formatDate(date) {
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2); // 월을 두 자릿수로 포맷
+    const day = ("0" + date.getDate()).slice(-2); // 일을 두 자릿수로 포맷
+    return `${year}-${month}-${day}`; // yyyy-MM-dd 형식으로 반환
+    }
+
+
+
+    $(document).ready(function () {
+        // URL 파라미터에서 예약 정보 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const reservationId = urlParams.get('reservationId');
+        const selectedDate = new Date(urlParams.get('date'));
+        const selectedMovie = urlParams.get('movie');
+        const selectedTheater = urlParams.get('theater');
+        const selectedTime = urlParams.get('time');
+        const selectedResmovieImage = urlParams.get('resmovieImage');
+
+        // 페이지가 로드될 때 예매 내역 표시
+        updateReservationDetails([], selectedDate, selectedMovie, selectedTheater, selectedTime, selectedResmovieImage);
+
+        console.log("Selected Movie Image URL:", selectedResmovieImage);
+        // 예약 정보 확인 (디버깅 용)
+        console.log({
+            reservationId,
+            selectedDate,
+            selectedMovie,
+            selectedTheater,
+            selectedTime,
+            selectedResmovieImage
+        });
+
+
+
+        // 날짜를 yyyy-MM-dd 형식으로 변환하여 서버로 보냄
+        const formattedDate = formatDate(selectedDate);
+        console.log("포맷된 날짜:", formattedDate);
+
+
+        // 페이지가 로드될 때 예약된 좌석을 서버에서 가져오기
+        $.ajax({
+            url: `/reservation/seatData?reservationId=${reservationId}&date=${formattedDate}&movie=${selectedMovie}&theater=${selectedTheater}&time=${selectedTime}`,
+            method: 'GET',
+            success: function (response) {
+                // 응답이 정상적으로 전달되었는지 확인
+                console.log(response);  // 응답 확인
+
+                // 서버에서 응답받은 reservedSeats가 없으면 빈 배열로 처리
+                const reservedSeats = response.reservedSeats || [];  // reservedSeats가 undefined인 경우 빈 배열로 처리
+
+                if (reservedSeats.length === 0) {
+                    console.log("예약된 좌석이 없습니다.");
+                } else {
+                    // 예약된 좌석을 화면에 표시
+                    reservedSeats.forEach(function (seatId) {
+                        $(`.seat[data-seat="${seatId}"]`).addClass('occupiedSeat'); // 예약된 좌석 표시
+                    });
+
+                    // 좌석을 클릭할 수 없도록 처리
+                    $('.seat').each(function () {
+                        const seatId = $(this).attr('data-seat');
+                        if ($(this).hasClass('occupiedSeat')) {
+                            $(this).css('pointer-events', 'none');  // 예약된 좌석은 클릭 불가
+                        }
+                    });
+                }
+            },
+            error: function (error) {
+                console.error('예약된 좌석 정보 로드 실패:', error);
+            }
+        });
+
+        // 성인과 청소년 인원수 합산해서 선택 가능한 좌석 수 업데이트
+        function updateTotalCount() {
+            const adultCount = parseInt($('#adultCount').val()) || 0;  // 성인 수
+            const youthCount = parseInt($('#youthCount').val()) || 0;  // 청소년 수
+            const totalCount = adultCount + youthCount;  // 총 인원수
+            $('#totalCount').text(totalCount);  // 총 인원수 업데이트
+            return totalCount;
+            updateReservationDetails();
+        }
+
+        // 인원수 변경 시 총 인원수 업데이트
+        $('#adultCount, #youthCount').on('input', function () {
+            updateTotalCount();
+        });
+
+        // 좌석을 클릭하면 선택하거나 선택을 해제하는 코드
+        $('.seat').click(function () {
+            const seatId = $(this).attr('data-seat');
+
+            // 이미 선택된 좌석은 선택 해제, 아니면 선택
+            if ($(this).hasClass('selectedSeat')) {
+                $(this).removeClass('selectedSeat');
+            } else {
+                // 예약된 좌석은 선택 불가
+                if ($(this).hasClass('occupiedSeat')) {
+                    alert('이 좌석은 이미 예약되었습니다.');
+                    return;
+                }
+
+                // 좌석 선택 및 해제 로직 추가
+                $(this).toggleClass('selectedSeat');
+
+                const totalSelected = $('.seat.selectedSeat').length;
+                const totalCount = updateTotalCount();
+
+                // 선택 가능한 좌석 수를 초과할 경우 경고
+                if (totalSelected > totalCount) {
+                    alert('선택할 수 있는 좌석 수가 초과되었습니다.');
+                    $(this).removeClass('selectedSeat');
+                }
+            }
+
+            // 선택된 좌석 업데이트
+            let selectedSeats = [];
+            $('.seat.selectedSeat').each(function () {
+                selectedSeats.push($(this).attr('data-seat'));
+            });
+
+            $('#selectedSeats').val(selectedSeats.join(', '));  // 선택된 좌석 값을 hidden input에 저장
+
+            // 실시간으로 예약 내역에 선택된 좌석 업데이트
+            updateReservationDetails(selectedSeats, selectedDate, selectedMovie, selectedTheater, selectedTime, selectedResmovieImage);
+        });
+
+        $('.btn-increase').on('click', function() {
+            let input = $('#adultCount');
+            let value = parseInt(input.val());
+            input.val(value + 1);
+        });
+
+        $('.btn-decrease').on('click', function() {
+            let input = $('#adultCount');
+            let value = parseInt(input.val());
+            if (value > 0) {
+                input.val(value - 1);
+            }
+        });
+
+         $('.btn-increase2').on('click', function() {
+            let input = $('#youthCount');
+            let value = parseInt(input.val());
+            input.val(value + 1);
+        });
+
+        $('.btn-decrease2').on('click', function() {
+            let input = $('#youthCount');
+            let value = parseInt(input.val());
+            if (value > 0) {
+                input.val(value - 1);
+            }
+        });
+
+
+        // 좌석 선택 후 폼 제출
+        $('#submitSeats').click(function (event) {
+         event.preventDefault();  // 폼 제출을 막고
+
+            const adultCount = parseInt($('#adultCount').val()) || 0;
+            const youthCount = parseInt($('#youthCount').val()) || 0;
+            const selectedSeats = $('#selectedSeats').val();  // 선택된 좌석 정보
+
+            if (!selectedSeats) {
+                alert('좌석을 선택해주세요.');
+                return;
+            }
+
+            const reservationId = new URLSearchParams(window.location.search).get('reservationId');
+
+            // 선택된 좌석 서버로 전송
+            $.ajax({
+                url: '/reservation/saveSeats',  // 좌석 정보를 저장할 URL
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    reservationId: reservationId,
+                    adultnum: adultCount,
+                    youthnum: youthCount,
+                    seats: selectedSeats
+                }),
+                success: function (response) {
+                    if (response.success) {
+                        alert('좌석 선택이 완료되었습니다.');
+                        window.location.href = '/reservation/confirmation';  // 예약 확인 페이지로 이동
+                    } else {
+                        alert('좌석 저장에 실패했습니다.');
+                    }
+                },
+                error: function (error) {
+                    console.error('좌석 저장 실패:', error);
+                    alert('서버 오류로 좌석을 저장할 수 없습니다.');
+                }
+            });
+        });
+    });
+
+    // 예약 내역을 업데이트하는 함수
+    function updateReservationDetails(selectedSeats, selectedDate, selectedMovie, selectedTheater, selectedTime, selectedResmovieImage) {
+        $('#reservationDetails2').html(`
+            <table>
+                <tr><td colspan="2">${selectedMovie}</td></tr>
+                <tr><td style="width:80%">${selectedDate.toISOString().split('T')[0]}</td><td rowspan="3" style="width:20%"><img src="${selectedResmovieImage}" alt="Movie Poster"></td></tr>
+                <tr><td style="width:80%">${selectedTheater}</td></tr>
+                <tr><td style="width:80%">${selectedTime}</td></tr>
+            </table>
+            <div><span>선택좌석</span><p>${selectedSeats.join(', ')}</p></div> <!-- 실시간 선택된 좌석 추가 -->
+        `);
+    }
+</script>
+
+
+
+</body>
+</html>

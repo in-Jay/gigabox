@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="supportHome">
+  <div class="support-wrap">
+    <div class="center">
+      <div class="support-list">
+        <div class="list-title">
+          <a th:href="@{/support/home}">
+            <p>고객센터</p>
+          </a>
+        </div>
+        <div class="list">
+          <ul>
+            <li><a th:href="@{/support/home}">
+              <p>고객센터 홈<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+            </a></li>
+            <li><a th:href="@{/faq}">
+              <p>자주 묻는 질문</p>
+            </a></li>
+            <li><a th:href="@{/support/support_list}">
+              <p>공지사항</p>
+            </a></li>
+            <li><a th:href="@{/qna/create}">
+              <p>1:1 문의</p>
+            </a></li>
+          </ul>
+        </div>
+        <div class="list-info">
+          <p>기가박스 고객센터</p>
+          <span>Dream center</span>
+          <p><i><img th:src="@{/img/clock.png}"></i>10:00 ~ 19:00</p>
+        </div>
+      </div>
+      <div class="list-main">
+        <h2>고객센터 홈</h2>
+        <div class="search-box">
+          <p>빠른검색</p>
+          <div class="input-box">
+            <input type="text" name="search" placeholder="검색어를 입력해 주세요.">
+            <button><img th:src="@{/img/search-icon.svg}"></button>
+          </div>
+        </div>
+        <div class="service-list">
+          <div class="service-box">
+            <a th:href="@{/faq}">
+              <img th:src="@{/img/faq-icon.png}">
+              <div class="service-text">
+                <p>자주 묻는 질문</p>
+                <span>자주 묻는 질문<br>빠르고 간편하게 검색하세요.</span>
+              </div>
+            </a>
+          </div>
+          <div class="service-box">
+            <a th:href="@{/support/support_list}">
+              <img th:src="@{/img/notice-icon.png}">
+              <div class="service-text">
+                <p>공지사항</p>
+                <span>점검 및 서비스<br>안내에 대해 확인하세요.</span>
+              </div>
+            </a>
+          </div>
+          <div class="service-box">
+            <a th:href="@{/qna/create}">
+              <img th:src="@{/img/qna-icon.png}">
+              <div class="service-text">
+                <p>1:1 문의</p>
+                <span>해결되지 않은 문제가 있나요?<br>1:1 문의로 문의주세요.</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="notice-box">
+          <div class="notice-left">
+            <div class="notice-title">
+              <h3>자주 묻는 질문 BEST5</h3>
+              <a th:href="@{/support/faq}">더보기<i><img th:src="@{/img/right-arrow-icon.svg}"></i></a>
+            </div>
+            <table>
+              <tr th:each="faq:${recentFaq}">
+                <th class="note-title">
+                  <b><a th:href="@{|/support/faq}" th:text="${faq.Question}"></a></b>
+                </th>
+                <td>
+                  <span th:text="${#temporals.format(faq.createDate, 'yyyy-MM-dd')}"></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="notice-right">
+            <div class="notice-title">
+              <h3>공지사항</h3>
+              <a th:href="@{/support/notice}">더보기<i><img th:src="@{/img/right-arrow-icon.svg}"></i></a>
+            </div>
+            <table>
+              <tr th:each="board:${recentBoard}">
+                <th class="note-title">
+                  <b><a th:href="@{|/support/detail/${board.id}|}" th:text="${board.subject}"></a></b>
+                </th>
+                <td>
+                  <span th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd')}"></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

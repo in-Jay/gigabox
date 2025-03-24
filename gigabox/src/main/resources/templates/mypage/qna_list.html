@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="myhome-qna">
+
+  <div class="center">
+    <div class="boardlist">
+      <div class="support-list">
+        <div class="list-title">
+          <a th:href="@{/mypage}">
+            <p>나의 기가박스</p>
+          </a>
+        </div>
+        <div class="list">
+          <ul>
+            <li><a th:href="@{/reservation/final}">
+              <p>예매/구매내역</p>
+            </a></li>
+            <li><a th:href="@{/cart/cart}">
+              <p>스토어 구매내역</p>
+            </a></li>
+            <li><a th:href="@{/qna/list}">
+              <p>나의 문의내역<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+            </a></li>
+            <li><a th:href="@{/user/verify}">
+              <p>회원정보</p>
+            </a></li>
+          </ul>
+        </div>
+        <div class="list-info">
+
+        </div>
+      </div>
+    </div>
+    <div class="qna-list-cont">
+      <h2>나의 문의내역</h2>
+      <div class="page-search flex">
+
+        </form>
+      </div>
+
+      <table>
+        <tr>
+          <th style="width:7%">번호</th>
+          <th style="width:15%">유형</th>
+          <th style="width:45%;">제목</th>
+          <th style="width:10%">답변상태</th>
+          <th style="width:13%">등록일</th>
+        </tr>
+        <tr th:each="qna : ${qnaList}">
+          <!-- 총 게시물 수에서 현재 페이지의 인덱스를 빼서 번호를 계산(+1) -->
+          <td th:text="${qna.id}"></td>
+          <td th:text="${qna.qnaSelect}"></td>
+          <td>
+            <a th:href="@{|/qna/detail/${qna.id}|}" th:text="${qna.subject}"></a>
+          </td>
+          <td th:text="${qna.answerCheck ? '답변완료' : '답변대기'}" ></td>
+          <td th:text="${qna.createDate}"></td>
+        </tr>
+        <tr>
+          <td colspan="5" class="writebtn">
+            <a th:href="@{/qna/create}">글쓰기</a>
+          </td>
+        </tr>
+      </table>
+
+
+    </div>
+
+  </div>
+  </div>
+</div>
+</body>
+</html>

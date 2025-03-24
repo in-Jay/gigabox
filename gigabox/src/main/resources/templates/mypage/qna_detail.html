@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="qna-detail">
+  <div class="center">
+    <div class="boardlist">
+      <div class="support-list">
+        <div class="list-title">
+          <a th:href="@{/mypage}">
+            <p>나의 기가박스</p>
+          </a>
+        </div>
+        <div class="list">
+          <ul>
+            <li><a th:href="@{/reservation/final}">
+              <p>예매/구매내역</p>
+            </a></li>
+            <li><a th:href="@{/cart/cart}">
+              <p>스토어 구매내역</p>
+            </a></li>
+            <li><a th:href="@{/qna/list}">
+              <p>나의 문의내역<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+            </a></li>
+            <li><a th:href="@{/user/verify}">
+              <p>회원정보</p>
+            </a></li>
+          </ul>
+        </div>
+        <div class="list-info">
+
+        </div>
+      </div>
+    </div>
+    <div class="qna-detail-cont">
+      <h2>나의 문의내역</h2>
+      <p>고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.</p>
+      <table>
+        <tr>
+          <td><h4 th:text="${qna.subject}"></h4></td>
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li><b>문의선택 </b><p th:text="${qna.qnaType}"></p></li>
+              <li><b>문의유형 </b><p th:text="${qna.qnaSelect}"></p>
+              <p th:text="${qna.answerCheck}"></p></li>
+            </ul>
+          </td>
+
+        </tr>
+        <tr>
+          <td class="creDate"><b>등록일 </b><p th:text="${qna.createDate}"></p></td>
+        </tr>
+        <tr>
+          <td th:text="${qna.content}"></td>
+        </tr>
+        <tr>
+          <td>
+            <ul class="answer-area">
+              <li th:each="comment : ${qna.commentList}">
+                <p th:text="${comment.content}"></p>
+                <div class="btn">
+                  <a href="javascript:void(0);"
+                     th:href="@{|/comment/delete/${comment.id}|}"
+                     th:text="삭제"
+                     class="delete btn btn-sm btn-outline-secondary">
+                    삭제
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <form th:action ="@{|/comment/create/${qna.id}|}" method="post">
+              <textarea name="content" id="content" rows="5" cols="80" placeholder="답변을 작성해 주세요."></textarea>
+              <input type="submit" value="작성"></input>
+
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td class="qnabtn">
+            <button type="button" onclick="location.href='/qna/list'">목록</button>
+            <a href="javascript:void(0)" th:href="@{|/qna/delete/${qna.id}|}" class="delete" th:text="삭제">삭제</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  </div>
+<script layout:fragment="script" type="text/javascript">
+  const delete_elements = document.getElementsByClassName("delete");
+
+  Array.from(delete_elements).forEach(function(element){
+      element.addEventListener('click', function(){
+      if(confirm("정말 삭제하시겠습니까?")){
+          location.href = this.dataset.uri;
+      };
+  });
+ });
+</script>
+</body>
+</html>

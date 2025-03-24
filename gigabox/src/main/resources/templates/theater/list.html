@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="theater">
+  <div class="center">
+    <div class="theater-box">
+      <h1>전체극장</h1>
+      <div class="area-tab">
+        <ul class="area-title">
+          <li><a th:href="@{/theater/theater1}">서울</a></li>
+          <li><a th:href="@{/theater/theater2}">경기</a></li>
+          <li><a th:href="@{/theater/theater3}">인천</a></li>
+          <li><a th:href="@{/theater/theater4}">대전/충청/세종</a></li>
+          <li><a th:href="@{/theater/theater5}">부산/대구/경상</a></li>
+          <li><a th:href="@{/theater/theater6}">광주/전라</a></li>
+          <li><a th:href="@{/theater/theater7}">강원</a></li>
+          <li><a th:href="@{/theater/theater8}">제주</a></li>
+        </ul>
+        <div class="area-content">
+          <div id="area01" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater1}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="area02" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater2}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="area03" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater3}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="area04" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater4}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="area05" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater5}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="area06" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater6}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="area07" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater7}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="area08" class="areaCont">
+            <div class="theater-unit">
+              <ul class="apiChild" th:each="theater : ${theater8}">
+                <li><a th:href="@{/theater/detail/{id}(id=${theater.id})}" th:text="${theater.theater}"></a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <h3 class="theater-evt">극장 이벤트</h3>
+    <div class="event-banner flex">
+      <div class="event1 evt">
+        <img th:src="@{/img/event3.jpg}" alt="이벤트">
+        <div class="evt-txt">
+          <p>포항점</p>
+          <h2>오픈 2주년<br>
+            감사 이벤트</h2>
+        </div>
+      </div>
+      <div class="event2 evt">
+        <img th:src="@{/img/event4.jpg}" alt="이벤트">
+        <div class="evt-txt">
+          <p>강남점</p>
+          <h2>문화누리 카드 사용<br>
+            할인 적용!</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script layout:fragment="script" type="text/javascript">
+  $(document).ready(function() {
+  // 현재 페이지의 URL 경로를 가져옴
+  var currentPath = window.location.pathname;
+
+  // 각 링크를 순회하면서 현재 URL과 비교
+  $('.area-title a').each(function() {
+    // 링크의 href 속성과 현재 경로를 비교
+    if (currentPath === $(this).attr('href')) {
+      // 일치하면 해당 <a> 태그에 .active 클래스를 추가
+      $(this).addClass('active');
+    }
+  });
+});
+</script>
+</body>
+</html>

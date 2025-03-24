@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+  <div layout:fragment="content" class="supportFaq">
+    <div class="support-wrap">
+      <div class="center">
+        <div class="support-list">
+          <div class="list-title">
+            <a th:href="@{/support/home}">
+              <p>고객센터</p>
+            </a>
+          </div>
+          <div class="list">
+            <ul>
+              <li><a th:href="@{/support/home}">
+                <p>고객센터 홈</p>
+              </a></li>
+              <li><a th:href="@{/faq}">
+                <p>자주 묻는 질문<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+              </a></li>
+              <li><a th:href="@{/support/support_list}">
+                <p>공지사항</p>
+              </a></li>
+              <li><a th:href="@{/support/qna}" >
+                <p>1:1 문의</p>
+              </a></li>
+            </ul>
+          </div>
+          <div class="list-info">
+            <p>기가박스 고객센터</p>
+            <span>Dream center</span>
+            <p><i><img th:src="@{/img/clock.png}"></i>10:00 ~ 19:00</p>
+          </div>
+        </div>
+        <div class="list-main">
+          <h2>자주 묻는 질문</h2>
+          <div class="search-box">
+            <p>빠른검색</p>
+            <form action="#" method="get" th:action="@{/support/faq}" class="input-box">
+              <input type="text" name="search" placeholder="검색어를 입력해 주세요." th:value="${search}" />
+              <button type="submit"><img th:src="@{/img/search-icon.svg}"></button>
+            </form>
+            <div>
+              <a th:href="@{/faq/create}">글쓰기</a>
+            </div>
+          </div>
+          <div class="q-list">
+            <ul>
+              <li class="q-cate q-all" data-set="faq-all">전체</li>
+              <li class="q-cate q-res" data-set="faq-res">영화예매</li>
+              <li class="q-cate q-pay" data-set="faq-pay">결제/관람권</li>
+              <li class="q-cate q-theater" data-set="faq-theater">극장</li>
+              <li class="q-cate q-store" data-set="faq-store">스토어</li>
+              <li class="q-cate q-page" data-set="faq-page">홈페이지/모바일</li>
+            </ul>
+          </div>
+          <div class="q-cont">
+            <div class="faq-list faq-all" data-category="faq-all">
+              <div class="faq-title">
+                <p>전체 <span th:text="${totalCount}"></span>건</p>
+              </div>
+              <ul th:each="faq, iterStat : ${paging}">
+                <li>
+                  <div class="q">
+                    <div class="q-text">
+                      <div class="q-title" th:text="'['+${faq.category}+']'"></div>
+                      <div class="q-cont" th:text="${faq.question}"></div>
+                    </div>
+                    <img th:src="@{/img/down-arrow-icon.svg}" th:classappend="${iterStat.index == 0 ? ' rotate' : ''}">
+                  </div>
+                  <div class="a" th:classappend="${iterStat.index == 0 ? ' show' : ''}">
+                    <div class="a-text">
+                      <div class="a-cont" th:text="${#strings.replace(faq.answer, '\n', '<br>')}"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div th:if="${!paging.isEmpty()}">
+                <ul class="pagination justify-content-center">
+                  <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+                      th:if="${page>= paging.number-10 and page <= paging.number+10}"
+                      th:classappend="${page == paging.number} ? 'active'"
+                      class="page-item">
+                    <a th:text="${page+1}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="faq-list faq-res" data-category="faq-res">
+              <div class="faq-title">
+                <p>'<span>영화예매</span>' <span th:text="${resCount}"></span>건</p>
+              </div>
+              <ul th:each="faq, iterStat : ${resFaq}">
+                <li th:if="${faq.category == '영화예매'}">
+                  <div class="q">
+                    <div class="q-text">
+                      <div class="q-title" th:text="'[' + ${faq.category} + ']'"></div>
+                      <div class="q-cont" th:text="${faq.question}"></div>
+                    </div>
+                    <img th:src="@{/img/down-arrow-icon.svg}" th:classappend="${iterStat.index == 0 ? ' rotate' : ''}">
+                  </div>
+                  <div class="a" th:classappend="${iterStat.index == 0 ? ' show' : ''}">
+                    <div class="a-text">
+                      <div class="a-cont" th:text="${#strings.replace(faq.answer, '\n', '<br>')}"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div th:if="${!resFaq.isEmpty()}">
+                <ul class="pagination justify-content-center">
+                  <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+                      th:if="${page>= paging.number-10 and page <= paging.number+10}"
+                      th:classappend="${page == paging.number} ? 'active'"
+                      class="page-item">
+                    <a th:text="${page+1}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="faq-list faq-pay">
+              <div class="faq-title">
+                <p>'<span>결제/관람권</span>' <span th:text="${payCount}"></span>건</p>
+              </div>
+              <ul th:each="faq, iterStat : ${payFaq}">
+                <li th:if="${faq.category == '결제/관람권'}">
+                  <div class="q">
+                    <div class="q-text">
+                      <div class="q-title" th:text="'[' + ${faq.category} + ']'"></div>
+                      <div class="q-cont" th:text="${faq.question}"></div>
+                    </div>
+                    <img th:src="@{/img/down-arrow-icon.svg}" th:classappend="${iterStat.index == 0 ? ' rotate' : ''}">
+                  </div>
+                  <div class="a" th:classappend="${iterStat.index == 0 ? ' show' : ''}">
+                    <div class="a-text">
+                      <div class="a-cont" th:text="${#strings.replace(faq.answer, '\n', '<br>')}"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div th:if="${!payFaq.isEmpty()}">
+                <ul class="pagination justify-content-center">
+                  <li th:each="page: ${#numbers.sequence(1, payFaq.totalPages)}"
+                      th:classappend="${page == payFaq.number + 1} ? 'active'"
+                      class="page-item">
+                    <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                </ul>
+              </div>
+            </div>
+            <div class="faq-list faq-theater">
+              <div class="faq-title">
+                <p>'<span>극장</span>' <span th:text="${theaterCount}"></span>건</p>
+              </div>
+              <ul th:each="faq, iterStat : ${theaterFaq}">
+                <li th:if="${faq.category == '극장'}">
+                  <div class="q">
+                    <div class="q-text">
+                      <div class="q-title" th:text="'[' + ${faq.category} + ']'"></div>
+                      <div class="q-cont" th:text="${faq.question}"></div>
+                    </div>
+                    <img th:src="@{/img/down-arrow-icon.svg}" th:classappend="${iterStat.index == 0 ? ' rotate' : ''}">
+                  </div>
+                  <div class="a" th:classappend="${iterStat.index == 0 ? ' show' : ''}">
+                    <div class="a-text">
+                      <div class="a-cont" th:text="${#strings.replace(faq.answer, '\n', '<br>')}"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div th:if="${!theaterFaq.isEmpty()}">
+                <ul class="pagination justify-content-center">
+                  <li th:each="page: ${#numbers.sequence(1, theaterFaq.totalPages)}"
+                      th:classappend="${page == theaterFaq.number + 1} ? 'active'"
+                      class="page-item">
+                    <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                </ul>
+              </div>
+            </div>
+            <div class="faq-list faq-store">
+              <div class="faq-title">
+                <p>'<span>스토어</span>' <span th:text="${storeCount}"></span>건</p>
+              </div>
+              <ul th:each="faq, iterStat : ${storeFaq}">
+                <li th:if="${faq.category == '스토어'}">
+                  <div class="q">
+                    <div class="q-text">
+                      <div class="q-title" th:text="'[' + ${faq.category} + ']'"></div>
+                      <div class="q-cont" th:text="${faq.question}"></div>
+                    </div>
+                    <img th:src="@{/img/down-arrow-icon.svg}" th:classappend="${iterStat.index == 0 ? ' rotate' : ''}">
+                  </div>
+                  <div class="a" th:classappend="${iterStat.index == 0 ? ' show' : ''}">
+                    <div class="a-text">
+                      <div class="a-cont" th:text="${#strings.replace(faq.answer, '\n', '<br>')}"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div th:if="${!storeFaq.isEmpty()}">
+                <ul class="pagination justify-content-center">
+                  <li th:each="page: ${#numbers.sequence(1, storeFaq.totalPages)}"
+                      th:classappend="${page == storeFaq.number + 1} ? 'active'"
+                      class="page-item">
+                    <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                </ul>
+              </div>
+            </div>
+            <div class="faq-list faq-page">
+              <div class="faq-title">
+                <p>'<span>홈페이지/모바일</span>' <span th:text="${pageCount}"></span>건</p>
+              </div>
+              <ul th:each="faq, iterStat : ${pageFaq}">
+                <li th:if="${faq.category == '홈페이지/모바일'}">
+                  <div class="q">
+                    <div class="q-text">
+                      <div class="q-title" th:text="'[' + ${faq.category} + ']'"></div>
+                      <div class="q-cont" th:text="${faq.question}"></div>
+                    </div>
+                    <img th:src="@{/img/down-arrow-icon.svg}" th:classappend="${iterStat.index == 0 ? ' rotate' : ''}">
+                  </div>
+                  <div class="a" th:classappend="${iterStat.index == 0 ? ' show' : ''}">
+                    <div class="a-text">
+                      <div class="a-cont" th:text="${#strings.replace(faq.answer, '\n', '<br>')}"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div th:if="${!pageFaq.isEmpty()}">
+                <ul class="pagination justify-content-center">
+                  <li th:each="page: ${#numbers.sequence(1, pageFaq.totalPages)}"
+                      th:classappend="${page == pageFaq.number + 1} ? 'active'"
+                      class="page-item">
+                    <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

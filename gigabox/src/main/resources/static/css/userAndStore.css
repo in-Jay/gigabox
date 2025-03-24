@@ -1,0 +1,1084 @@
+
+/* 스토어 */
+.store {
+    margin-top:50px;
+}
+.store .center {
+    height: 100%;
+    margin: 0 auto;
+}
+.store .center h1 {
+    margin-bottom:30px;
+    font-size:30px;
+    font-weight:100;
+}
+.tab {
+    width:100%;
+}
+.tab-title {
+    font-size:14px;
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+}
+.tab-title li {
+    display:inline-block;
+    width:calc(100% / 4);
+    margin:0;
+    height:49px;
+    text-align:center;
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+    border-top:1px solid #ddd;
+    box-sizing: border-box;
+
+}
+.tab-title li:not(:last-child) {
+  border-right: none; /* 중간 테두리를 없앰 */
+}
+/*li선택하기 전 상태*/
+.tab-title li a:before {
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:1px;
+}
+
+
+.tab-title li a.active {
+    border-top: 1px solid #503396;
+    border-right:1px solid #503396;
+    border-left:1px solid #503396;
+    border-bottom: none;
+    color:#503396;
+}
+.tab-title li a {
+    height:100%;
+    position:relative;
+    display:block;
+    color:#222;
+    padding: 0 30px;
+    line-height:46px;
+    text-decoration:none;
+    font-size:16px;
+    border-bottom:1px solid #503396;
+}
+
+.tabcontent {
+    width:100%;
+    border-top:none;
+    margin-bottom:50px;
+}
+.tabcontent .tabCont {
+    width:100%;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items:left;
+    justify-content:center;
+
+}
+.tabcontent #tab01 .storeRecom {
+    width:50%;
+    height:300px;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:left;
+    align-items:center;
+    margin-top:30px;
+    color:#222;
+}
+.tabcontent #tab01 .storeRecom .recomtxt {
+    width:60%;
+    height:100%;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:center;
+    padding-right:20px;
+}
+.tabcontent #tab01 .storeRecom .recomtxt h4,
+.tabcontent #tab01 .storeRecom .recomtxt p,
+.tabcontent #tab01 .storeRecom .recomtxt i,
+.tabcontent #tab01 .storeRecom .recomtxt span,
+.tabcontent #tab01 .storeRecom .recomtxt b{
+    white-space:wrap;
+    display:block;
+    font-weight:100;
+}
+.tabcontent #tab01 .storeRecom .recomtxt h4 {
+    font-size:30px;
+    color:#503396;
+    margin-bottom:20px;
+}
+.tabcontent #tab01 .storeRecom .recomtxt i {
+    font-size:30px;
+    font-weight:100;
+    color:#01738b;
+    font-style:normal;
+}
+.tabcontent #tab01 .storeRecom .recomtxt p {
+    font-size: 17px;
+    line-height:25px;
+}
+.tabcontent #tab01 .storeRecom .recomtxt span {
+    font-size: 15px;
+    line-height:20px;
+    color:#666;
+}
+.tabcontent #tab01 .storeRecom .recomtxt b{
+    font-size:25px;
+    margin-top:20px;
+    color:#503396;
+    display:block;
+}
+.tabcontent #tab01 .storeRecom .recomImg {
+    width:40%;
+}
+.tabcontent #tab01 .storeRecom .recomImg img {
+    object-fit:cover;
+    width:240px;
+    height:240px;
+}
+.tabcontent > .tabCont > .apiParent {
+    width:100%;
+    display:flex;
+    flex-flow: row wrap;
+    align-items:center;
+    justify-content:space-between;
+}
+.tabcontent > #tab01 > div {
+    width:100%;
+    display:flex;
+    flex-flow: row wrap;
+    align-items:center;
+    justify-content:space-between;
+}
+.tabcontent > #tab01 h4 {
+    font-size:24px;
+    color:#503396;
+}
+.tabcontent > #tab01 .tab-txt {
+    margin-top:80px;
+}
+.tabcontent > #tab01 .tab-txt-first {
+    margin-top:30px;
+}
+.tabcontent > #tab01 .tab-txt > a{
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+}
+.tabcontent .tabCont > .apiParent > .apiChild {
+    width:calc(25% - 40px);
+    margin-right:40px;
+    height:430px;
+    border:1px solid #eee;
+    overflow:hidden;
+    margin-top: 30px;
+    border-top-right-radius: 10px;  /* 왼쪽 위 */
+    border-bottom-left-radius: 10px;  /* 왼쪽 아래 */
+    border-bottom-right-radius: 10px;
+}
+.tabcontent .tabCont > .apiParent > .apiChild {
+    width:calc(25% - 40px);
+    margin-right:40px;
+    height:430px;
+    border:1px solid #eee;
+    overflow:hidden;
+    margin-top: 30px;
+    border-top-right-radius: 10px;  /* 왼쪽 위 */
+    border-bottom-left-radius: 10px;  /* 왼쪽 아래 */
+    border-bottom-right-radius: 10px;
+}
+.tabcontent .tabCont > .apiParent > .apiChild:last-child,
+.tabcontent .tabCont > .apiParent > .apiChild:nth-child(4),
+.tabcontent .tabCont > .apiParent > .apiChild:nth-child(8){
+   margin-right: 0; /* 네 번째 div는 오른쪽 여백을 없앰 */
+}
+#tab02 > .apiParent > .apiChild:nth-child(4){
+   margin-right: 40px; /* 네 번째 div는 오른쪽 여백을 없앰 */
+}
+#tab02 > .apiParent > .apiChild:nth-child(5){
+   margin-right: 0; /* 네 번째 div는 오른쪽 여백을 없앰 */
+}
+.tabcontent .tabCont > .apiParent > .apiChild > a {
+    width:100%;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:space-between;
+    align-items:center;
+}
+.tabcontent .tabCont > .apiParent > .apiChild:last-child,
+.tabcontent .tabCont > .apiParent > .apiChild:nth-child(4),
+.tabcontent .tabCont > .apiParent > .apiChild:nth-child(8){
+   margin-right: 0; /* 네 번째 div는 오른쪽 여백을 없앰 */
+}
+.tabcontent .tabCont .tab-cont-img {
+    width:100%;
+    height:240px;
+    display: flex;
+    justify-content: center; /* 수평 가운데 */
+    align-items: center;
+    border-bottom:1px solid #eee;
+    background:#fff;
+}
+.tabcontent .tabCont .tab-cont-img > img {
+    width:100%;
+    height:240px;
+    object-position:center;
+    margin:auto 0;
+    object-fit:contain;
+}
+.tabcontent .tabCont .tab-cont-txt {
+    padding:20px;
+    width:100%;
+    height:100%;
+}
+.tabcontent .tabCont .tab-cont-txt h3 {
+     font-size:15px;
+     line-height: 20px;
+     color:#222;
+     font-weight:100;
+     width: 100%;
+     height: 100px;
+     border-bottom:1px solid #ddd;
+     margin-bottom:20px;
+ }
+ .tabcontent .tabCont .tab-cont-txt p {
+      font-size:20px;
+      color:#503396;
+      width:100%;
+      text-align:right;
+
+  }
+
+
+/*tab2 */
+#tab02 .apiParent > div:first-child,
+#tab02 .apiParent > div:nth-child(8){
+    display:none;
+}
+#tab03 .apiParent > div:nth-child(9),
+#tab03 .apiParent > div:nth-child(10){
+    display:none;
+}
+#tab04 .apiParent > div:nth-child(9),
+#tab04 .apiParent > div:nth-child(10){
+    display:none;
+}
+/*스토어 상세페이지*/
+.store-detail .center {
+    margin:0 auto 100px;
+}
+.store-detail .center > h2 {
+    margin-top: 50px;
+    font-weight:100;
+}
+.store-detail .center > p {
+    display:block;
+    margin: 10px 0;
+}
+.store-detail .product-box {
+    height:450px;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:center;
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    margin-bottom:30px;
+
+}
+.store-detail .product-box .product-description {
+    width:55%;
+    height: 100%;
+    padding : 30px 0 30px 30px;
+}
+.product-description table {
+    width: 100%;
+    border-collapse:collapse;
+}
+.product-description table tr,
+.product-description table th,
+ .product-description table td {
+    height : 40px;
+    font-size:15px;
+    text-align: left;
+}
+.product-description table th {
+    width:100px;
+}
+.product-description table .price-area {
+    height:60px;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+.product-description table .price-area th,
+.product-description table .price-area td,{
+    height: 100%;
+}
+.product-description table .btn-box td {
+    width:100%;
+}
+.product-description table .btn-box > td > button {
+    width:48%;
+    height:50px;
+    border-radius:5px;
+    margin-top:20px;
+    font-size: 16px;
+}
+.product-description table .btn-box .button1 {
+    background-color:#fff;
+    border:1px solid #503396;
+    margin-right:15px;
+}
+.product-description table .btn-box .button2 {
+    background-color:#503396;
+    border:1px solid #503396;
+    color:#fff;
+}
+.store-detail .product-box .product-img {
+    width:45%;
+    height:100%;
+    border-right:1px solid #ddd;
+    overflow:hidden;
+    padding:50px;
+}
+.store-detail .product-box .product-img img {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+
+/*스토어 info*/
+.store-detail {
+    width: 100%;
+    margin-top:50px;
+}
+.store-detail .info-txt {
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-between;
+    align-items:center;
+    background-color:#fff;
+    border:1px solid #efefef;
+    border-radius:5px;
+    padding:0 20px;
+    height:40px;
+    color:#222;
+    margin-top:20px;
+}
+.info.open .info-txt {
+    background-color:#efefef;
+}
+.store-detail .info-txt .arrow svg {
+    width:20px;
+    fill:#aaa;
+}
+.store-detail .info-txt h5 {
+    font-size: 16px;
+}
+.store-detail .info-txt p {
+    font-size: 15px;
+    font-weight:100;
+    line-height:30px;
+}
+.store-detail .info-des {
+    padding:20px 20px 40px 20px;
+    display:none;
+    margin-top:10px;
+    transition: height 0.3s ease;
+}
+.info.open .info-des {
+    display:block;
+}
+.info .arrow-down {
+    display:block;
+}
+.info .arrow-up {
+    display:none;
+}
+.info.open .arrow-down {
+    display:none;
+}
+.info.open .arrow-up {
+    display:block;
+}
+
+.login_bts {
+    margin:0 auto;
+}
+/*회원가입 페이지*/
+.signupForm {
+    width : 100%;
+    height: 100vh;
+    background-color : #ddd;
+
+}
+/*width 40% -> 750px*/
+.center-40 {
+    width : 750px;
+}
+.signupForm .center-40 {
+    height:100vh;
+    background-color : #fff;
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+}
+.signupForm .center-40 h1{
+    margin-left: 120px;
+    font-size: 24px;
+    color:#351f66;
+    margin-bottom:10px;
+}
+.signupForm .center-40 p {
+    margin-left: 120px;
+    margin-bottom:20px;
+}
+.signupForm .center-40 .logo {
+    width:100%;
+    padding: 50px 0;
+}
+.signupForm .center-40 form table tr td .idbtn {
+   width: 80px;
+   height:30px;
+   border:1px solid #ddd;
+   background-color: #eee;
+   color: #666;
+   border-radius:5px;
+   font-size:15px;
+   margin-left:10px;
+}
+.signupForm .center-40 form table tr td .idbtn_log {
+   width: 100%;
+   height:40px;
+   border:1px solid #ddd;
+   background-color: #eee;
+   color: #666;
+   border-radius:5px;
+   font-size:15px;
+}
+.signupForm .center-40 form table tr td .login_btns {
+    width: 170px;
+    margin: 0 auto;
+}
+.signupForm .center-40 .login-abox {
+    width:250px;
+    margin:0 auto;
+}
+.signupForm .center-40 .login-abox a {
+    white-space:nowrap;
+}
+.signupForm .center-40 .login-abox a:after {
+    content:"|";
+    font-size: 14px;
+    color:#777;
+    margin: 0 10px;
+}
+.signupForm .center-40 .login-abox a:last-child:after {
+    content:"";
+}
+
+.signupForm .center-40 .logo img {
+    display:block;
+    width:150px;
+    margin:0 auto;
+
+}
+.signupForm .center-40 .form {
+    width:100%;
+}
+.signupForm .center-40 .form table {
+   border-top : 2px solid #444;
+   width:70%;
+   margin : 0 auto;
+   border-collapse: collapse;
+}
+.signupForm .center-40 .form table tr {
+    height:50px;
+    border-bottom:1px solid #888;
+}
+.signupForm .center-40 .form table tr:last-child {
+    border-bottom:none;
+    height: 200px;
+}
+.signupForm .center-40 .form table tr th {
+    width: 30%;
+    height:100%;
+    background-color: #efefef;
+    text-align:left;
+    padding-left: 20px;
+    white-space:nowrap;
+}
+.signupForm .center-40 .form table tr td input {
+    border-radius:0;
+    width: 60%;
+    height: 30px;
+    outline: none;
+    border:1px solid #ddd;
+    margin-left:20px;
+}
+.signupForm .center-40 .form .join_btn button {
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+    margin:0 auto;
+    display:block;
+    border:1px solid #ddd;
+    background-color: #eee;
+    color: #666;
+    border-radius:5px;
+}
+div.danger {
+    margin-left:20px;
+    color: #AF1740;
+    font-size:14px;
+}
+
+
+
+/*아이디 비밀번호찾기 화면*/
+.auth-area {
+    width : 100%;
+    height: 100vh;
+    background-color : #ddd;
+}
+.auth-area .center-40 {
+    width : 40%;
+    height:100vh;
+    background-color : #fff;
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.auth-area .center-40 h2{
+    margin-left: 120px;
+    font-size: 24px;
+    color:#351f66;
+    margin-bottom:10px;
+}
+.auth-area .center-40 .logo {
+    width:150px;
+    margin:0 auto;
+    padding: 50px 0;
+}
+.auth-area .center-40 .logo img{
+    width:150px;
+    object-fit:cover;
+}
+.auth {
+    width:70%;
+    margin:0 auto;
+}
+.auth-title {
+    font-size:14px;
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+}
+.auth-title li {
+    display:inline-block;
+    width:calc(100% / 2);
+    margin:0;
+    height:40px;
+    text-align:center;
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+    border-top:1px solid #ddd;
+    box-sizing: border-box;
+
+}
+.auth-title li:not(:last-child) {
+  border-right: none; /* 중간 테두리를 없앰 */
+}
+/*li선택하기 전 상태*/
+.auth-title li a:before {
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:1px;
+}
+
+
+.auth-title li a.active {
+    border-top: 1px solid #503396;
+    border-right:1px solid #503396;
+    border-left:1px solid #503396;
+    border-bottom: none;
+    color:#503396;
+}
+.auth-title li a {
+    height:100%;
+    position:relative;
+    display:block;
+    color:#222;
+    padding: 0 30px;
+    line-height:46px;
+    text-decoration:none;
+    font-size:16px;
+    border-bottom:1px solid #503396;
+}
+
+.auth-content {
+    width:100%;
+    border-top:none;
+}
+.authCont {
+    width:100%;
+}
+.authCont h3{
+    margin:40px 0 20px;;
+}
+.auth-area .findIdForm table {
+   border-top : 2px solid #444;
+   width:100%;
+   margin : 0 auto;
+   border-collapse: collapse;
+}
+.authCont .findIdForm table tr {
+    height:50px;
+    border-bottom:1px solid #888;
+}
+.authCont .findIdForm table tr:last-child {
+    border-bottom:none;
+    height: 200px;
+}
+.authCont .findIdForm table tr th {
+    width: 30%;
+    height:100%;
+    background-color: #efefef;
+    text-align:left;
+    padding-left: 20px;
+    white-space:nowrap;
+}
+.authCont .findIdForm table tr td input {
+    border-radius:0;
+    width: 60%;
+    height: 30px;
+    outline: none;
+    border:1px solid #ddd;
+    margin-left:20px;
+}
+.authCont .findIdForm table tr td .join_btn {
+    margin:50px auto;
+    width:170px;
+}
+.authCont .findIdForm .join_btn button {
+    width: 90px;
+    height: 40px;
+    font-size: 14px;
+    display:block;
+    border:1px solid #ddd;
+    background-color: #eee;
+    color: #666;
+    border-radius:5px;
+    margin: 0 5px;
+    white-space:nowrap;
+}
+.authCont .findIdForm .join_btn button:disabled {
+    width: 90px;
+    height: 40px;
+    font-size: 14px;
+    display:block;
+    border:1px solid #ddd;
+    background-color: #eee;
+    color: #ddd;
+    border-radius:5px;
+    white-space:nowrap;
+}
+.authCont .findIdForm {
+    width:100%;
+}
+
+#auth02 table {
+    border-top : 2px solid #444;
+   width:100%;
+   margin : 0 auto;
+   border-collapse: collapse;
+}
+#auth02 table tr {
+    height:50px;
+    border-bottom:1px solid #888;
+}
+#auth02 table tr:last-child {
+    border-bottom:none;
+    height: 200px;
+}
+#auth02 table tr th {
+    width: 30%;
+    height:100%;
+    background-color: #efefef;
+    text-align:left;
+    padding-left: 20px;
+    white-space:nowrap;
+}
+#auth02 table tr td input {
+    border-radius:0;
+    width: 60%;
+    height: 30px;
+    outline: none;
+    border:1px solid #ddd;
+    margin-left:20px;
+}
+#auth02 table tr td .join_btn {
+    margin:50px auto;
+    width:190px;
+}
+#auth02 .join_btn button {
+   width: 90px;
+   height: 40px;
+   font-size: 14px;
+   display:block;
+   border:1px solid #ddd;
+   background-color: #eee;
+   color: #666;
+   border-radius:5px;
+   margin: 0 5px;
+   white-space:nowrap;
+}
+#auth02 .join_btn button:disabled {
+   width: 90px;
+   height: 40px;
+   font-size: 14px;
+   display:block;
+   border:1px solid #ddd;
+   background-color: #eee;
+   color: #ddd;
+   border-radius:5px;
+   white-space:nowrap;
+}
+
+
+/*마이페이지*/
+.myhome {
+    width:100%;
+    height:calc(100vh - 290px);
+}
+.myhome .center {
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items:top;
+
+}
+.myhome .center .boardlist .support-list .list ul li:first-child  {
+    background-color: #fff;
+}
+.myhome .center .boardlist .support-list .list ul li:first-child {
+    color: #351f66;
+}
+.myhome .center .boardlist .support-list .list > ul > li {
+    position: relative;
+    width: 100%;
+    height: 39.5px;
+    color: #333;
+    background-color: #f2f4f5;
+    border-top: 1px solid #d8d9db;
+    align-content: center;
+    cursor: pointer;
+}
+
+.myhome-qna .center .boardlist .support-list .list ul li:nth-child(3) {
+    background-color: #fff;
+}
+.myhome-qna .center .boardlist .support-list .list ul li:nth-child(3){
+    color: #351f66;
+}
+.myhome-qna .center .boardlist .support-list .list > ul > li {
+    position: relative;
+    width: 100%;
+    height: 39.5px;
+    color: #333;
+    background-color: #f2f4f5;
+    border-top: 1px solid #d8d9db;
+    align-content: center;
+    cursor: pointer;
+}
+
+.home-wrap{
+    width:100%;
+    margin-left:50px;
+}
+.home-cont {
+    height:200px;
+    width:100%;
+    border-radius:10px;
+    background-color:#130E3E;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:left;
+    align-items:top;
+    padding: 30px;
+}
+.home-cont h1 {
+    color:#fff;
+}
+.home-cont .user-img img{
+    width:100px;
+    height: 100px;
+    margin-right: 20px;
+}
+.home-cont .welcome-txt {
+    display: flex;
+    flex-flow:column nowrap;
+    align-items:left;''
+}
+.home-cont .welcome-txt .welcome-abox {
+    margin-top: 40px;
+}
+.home-cont .welcome-txt .welcome-abox ul {
+    display: flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content:left;
+}
+.home-cont .welcome-txt .welcome-abox ul li a {
+    color:#ddd;
+    font-size: 14px;
+}
+.home-cont .welcome-txt .welcome-abox ul li:after {
+    content:"|";
+    color: #ccc;
+    font-size: 12px;
+    margin: 0 10px;
+}
+.home-cont .welcome-txt .welcome-abox ul li:last-child:after {
+    content:"";
+    margin: 0 10px;
+}
+
+.board-wrap .notice-box {
+    width: 840px;
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.board-wrap .notice-box .notice-title {
+    width: 400px;
+    height: 43px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.board-wrap .notice-box .notice-title a {
+    display: flex;
+}
+.board-wrap .notice-box .notice-title i {
+    margin-left: 7px;
+}
+.board-wrap .notice-box .notice-title img {
+    width: 10px;
+    height: 20px;
+}
+.board-wrap .notice-box ul li {
+    height: 30px;
+}
+.board-wrap .notice-box .notice-left {
+    width: 400px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size:14px;
+}
+.board-wrap .notice-box .notice-right {
+    width: 400px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size:14px;
+}
+.board-wrap .notice-box .notice-right table {
+    width:100%;
+}
+.board-wrap .notice-box .notice-right table tr {
+    height:30px;
+}
+.board-wrap .notice-box .notice-right table .note-title{
+    width:300px;
+
+}
+.board-wrap .notice-box .notice-right table .note-title a {
+    display:block;
+    width:270px;
+    white-space: nowrap;  /* 텍스트가 한 줄로 표시되도록 함 */
+    overflow: hidden;     /* 넘치는 텍스트를 숨김 */
+    text-overflow: ellipsis;
+    text-align:left;
+}
+.board-wrap .notice-box .notice-right table tr td{
+    width:100px;
+}
+
+/*장바구니*/
+.cart {
+    width: 100%;
+    min-height:650px;
+}
+.cart .center {
+    margin: 50px auto;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:top;
+}
+.cart .cart-list{
+    width:70%;
+}
+.cart .cart-list h2 {
+    margin-bottom:30px;
+}
+.cart .cart-list p {
+    font-size:14px;
+    color: #666;
+    margin-bottom:10px;
+}
+.cart .cart-list b {
+    font-size:14px;
+    color: #666;
+    font-weight:100;
+}
+.cart .cart-list .cart-box {
+    width:100%;
+    border-top:1px solid #444;
+}
+.cart .cart-list .cart-box h3 {
+    font-size:14px;
+    font-weight:100;
+    margin:10px 0;
+}
+
+.cart .cart-list table {
+    width:100%;
+    border-collapse:collapse;
+    border-bottom:1px solid #444;
+}
+.cart .cart-list table tr {
+    height: 180px;
+}
+.cart .cart-list table tr td {
+    padding: 20px;
+}
+.cart .cart-list table tr td ul li {
+    margin 3px 0;
+}
+.cart .cart-list table tr td img {
+    width: 130px;
+    object-fit:contain;
+}
+.cart .cart-list table tr td input {
+    width:50px;
+}
+.cart .cart-list table tr td h4 {
+    font-weight:100;
+    font-size:15px;
+    margin-bottom:20px;
+}
+.cart .cart-list table tr td .delete-btn {
+    padding: 3px 5px;
+    border-radius:5px;
+    background-color:#fff;
+    border:1px solid #666;
+}
+
+.cart .pay-box {
+    width:30%;
+    height: 550px;
+    border-radius:10px;
+    background-color:#333;
+    margin-left:30px;
+    padding: 30px;
+    position:relative;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content:space-between;
+    overflow:hidden;
+}
+.cart .pay-box h2 {
+    font-size: 20px;
+    color:#fff;
+    margin-bottom:20px;
+}
+.cart .pay-box .cost {
+    width: 100%;
+    height: 60px;
+    border-radius:10px;
+    background-color: #444;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:center;
+    justify-content:space-between;
+    color:#fff;
+    padding:0 10px;
+    margin-bottom:10px;
+}
+.cart .pay-box .plus-round {
+    width:25px;
+    height:25px;
+    border-radius:30px;
+    background-color:#14b9cb;
+    position:absolute;
+    font-size:20px;
+    font-weight:100;
+    padding-left:6px;
+    color:#fff;
+    left:50%;
+    transform:translateX(-50%);
+    top:127px;
+}
+.cart .pay-box .pay-btns {
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:40px;
+}
+.cart .pay-box .pay-btns ul {
+    display:flex;
+    flex-flow: row nowrap;
+    width:100%;
+    height:100%;
+}
+.cart .pay-box .pay-btns ul li {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.cart .pay-box .pay-btns ul li a {
+    color:#fff;
+    font-size:16px;
+}
+.cart .pay-box .pay-btns ul li:first-child {
+    background-color: #555;
+    width:50%;
+    height:100%;
+    color:#fff;
+}
+.cart .pay-box .pay-btns ul li:last-child {
+    background-color: #14b9cb;
+    width:50%;
+    height:100%;
+    color:#fff;
+}
+.cart .final-cost {
+    display:flex;
+    height:40px;
+    flex-flow: row nowrap;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    color: #fff;
+    border-bottom:1px solid #fff;
+    margin-bottom : 50px;
+}
+.cart .final-cost h3 {
+    font-size:16px;
+    font-weight:100;
+}
+.cart .final-cost p {
+    color: #14b9cb;
+    font-size:18px;
+}

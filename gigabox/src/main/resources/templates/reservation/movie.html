@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="movie-book">
+    <div class="center">
+        <h2>빠른예매</h2>
+        <div class="dateTimeWrapper">
+            <button class="scroll-btn left"><img th:src="@{/img/left_icon.png}"></button>
+            <table cellspacing="0" cellpadding="0" style="width:100%">
+                <tr>
+                    <td colspan="3">
+                        <div class="datesWrapper">
+                            <ul class="dateHolder">
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <button class="scroll-btn right"><img th:src="@{/img/right_icon.png}"></button>
+        </div>
+        <div class="total-box">
+            <div class="movie-pick">
+                <h3>영화</h3>
+                <div class="select-movies" id="movieList">
+
+                </div>
+            </div>
+            <div class="area-pick">
+                <h3>극장</h3>
+                <div class="three-depth-tab-menu">
+                    <ul>
+                        <li>
+                            <a href="#">서울</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="1">강남</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="2">강동</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="3">군자</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="4">동대문</a>
+                                </li>
+                            </ul>
+                        </li><!-- 서울 -->
+                        <li>
+                            <a href="#">경기</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="5">백석벨라시타</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="6">부천스타필드시티</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="7">분당</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="8">수원</a>
+                                </li>
+                            </ul>
+                        </li><!-- 경기 -->
+                        <li>
+                            <a href="#">인천</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="9">검단</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="10">송도</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="11">인천논현</a>
+                                </li>
+                            </ul>
+                        </li><!-- 인천 -->
+                        <li>
+                            <a href="#">대전/충청/세종</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="12">대전</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="13">오창</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="14">천안</a>
+                                </li>
+                            </ul>
+                        </li><!-- 대전/충청/세종 -->
+                        <li>
+                            <a href="#">부산/대구/경상</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="15">대구신세계(동대구)</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="16">부산극장</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="17">창원</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="18">포항</a>
+                                </li>
+                            </ul>
+                        </li><!-- 부산/대구/경상(27) -->
+                        <li>
+                            <a href="#">광주/전라</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="19">광주하남</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="20">목포하당(포르모)</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="21">순천</a>
+                                </li>
+                            </ul>
+                        </li><!-- 광주/전라(9) -->
+                        <li>
+                            <a href="#">강원</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="22">남춘천</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-restheater-id="23">속초</a>
+                                </li>
+                            </ul>
+                        </li><!-- 강원 -->
+                        <li>
+                            <a href="#">제주</a>
+                            <ul class="sub1">
+                                <li>
+                                    <a href="#" data-restheater-id="24">제주서귀포</a>
+                                </li>
+                            </ul>
+                        </li><!-- 제주(3) -->
+                    </ul>
+                </div>
+            </div>
+            <div class="time-pick">
+                <h3>시간</h3>
+                <div class="time">
+                    <div id="additionalTimesContainer"></div>
+                </div>
+            <!-- 시간 -->
+            </div>
+        </div>
+        <div class="confirm-box flex">
+            <div id="reservationDetails"></div>
+            <button type="button" id="bookReservation">예약하기</button>
+        </div>
+    </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script layout:fragment="script" type="text/javascript">
+    $(document).ready(function () {
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+        // 날짜 및 시간 관련 변수
+        const days = ['일', '월', '화', '수', '목', '금', '토'];
+        const daysFull = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+        const months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+        let currentDate = new Date();
+        let movieList = [];
+        let selectedResmovie, selectedArea, selectedRestheater, selectedTime, selectedResmovieId, selectedResmovieImage, selectedRestheaterId;
+        let selectedDate = '';
+        let userId = '';
+
+        function pad(input) {
+            return input ? ("00" + input).slice(-2) : "00";
+        }
+
+        // 달력 렌더링 함수
+        function renderCalendar(date) {
+            $(".dateHolder").empty();  // 기존 날짜들 초기화
+            const today = new Date();  // 오늘 날짜
+            today.setHours(0, 0, 0, 0);  // 시간을 00:00:00으로 초기화하여 비교할 수 있도록
+
+            // 20일 뒤까지 날짜 계산
+            const endDate = new Date(today);
+            endDate.setDate(today.getDate() + 20);  // 오늘 날짜로부터 20일 후
+
+            // 날짜를 20일까지 렌더링
+            for (let day = 0; day < 20; day++) {
+                const thisDate = new Date(today);
+                thisDate.setDate(today.getDate() + day); // 오늘부터 날짜를 1일씩 증가시켜 렌더링
+
+                const dayClass = thisDate.toDateString() === today.toDateString() ? "dateCurrent" : "";
+                const weekdayClass = (thisDate.getDay() === 0) ? "sunday" : (thisDate.getDay() === 6) ? "saturday" : "";
+
+                // 현재 날짜에 "오늘" 표시
+                const dayLabel = thisDate.toDateString() === today.toDateString() ? "오늘" : days[thisDate.getDay()];
+
+                $(".dateHolder").append(`
+                    <li>
+                        <div class="date ${dayClass} ${weekdayClass}" data-date="${thisDate.toLocaleDateString()}">${pad(thisDate.getDate())}</div>
+                        <div class="day ${weekdayClass}">${dayLabel}</div>
+                    </li>
+                `);
+            }
+        }
+
+        // 페이지 로드시, 오늘부터 20일까지 날짜만 보여주도록
+        renderCalendar(currentDate);
+
+        let leftPosition = 0;  // 현재 위치
+        const moveDistance = 90;  // 한 번에 이동할 거리
+        const maxLeft = 0;  // 최소 위치 (왼쪽 끝)
+        const minLeft = -90 * ($('.dateHolder li').length - 11);  // 최대 이동 거리 (예: 20일 중 11일만 화면에 보이면, 나머지 범위만큼 이동)
+
+        // 좌측 버튼 클릭 시
+        $(".scroll-btn.left").click(function () {
+            if (leftPosition < maxLeft) {
+                leftPosition += moveDistance;  // 90px 오른쪽으로 이동
+                $(".datesWrapper").css('left', leftPosition + 'px');
+                console.log('Left Position: ', leftPosition);  // leftPosition 값 확인
+                updateButtons();
+            }
+        });
+
+        // 우측 버튼 클릭 시
+        $(".scroll-btn.right").click(function () {
+            if (leftPosition > minLeft) {
+                leftPosition -= moveDistance;  // 90px 왼쪽으로 이동
+                $(".datesWrapper").css('left', leftPosition + 'px');
+                console.log('Left Position: ', leftPosition);  // leftPosition 값 확인
+                updateButtons();
+            }
+        });
+
+        // 버튼 비활성화 상태 갱신
+        function updateButtons() {
+            if (leftPosition >= maxLeft) {
+                $(".scroll-btn.left").prop('disabled', true);  // 왼쪽 끝에 도달하면 좌측 버튼 비활성화
+            } else {
+                $(".scroll-btn.left").prop('disabled', false);  // 좌측 버튼 활성화
+            }
+
+            if (leftPosition <= minLeft) {
+                $(".scroll-btn.right").prop('disabled', true);  // 오른쪽 끝에 도달하면 우측 버튼 비활성화
+            } else {
+                $(".scroll-btn.right").prop('disabled', false);  // 우측 버튼 활성화
+            }
+        }
+
+        updateButtons();  // 초기 버튼 상태 설정
+
+        // 날짜를 선택하면 선택된 날짜로 처리
+        $(document).on('click', '.dateHolder li', function () {
+            $('.dateHolder li').removeClass('active');
+            $(this).addClass('active');
+
+
+            selectedDate = new Date($(this).find('.date').data('date'));
+
+        // 서울 시간으로 변환 (타임존 고려)
+        const seoulTime = new Date(selectedDate.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+
+            const utcDate = selectedDate.toISOString().split('T')[0];
+
+            console.log('선택된 날짜:', utcDate);
+            updateReservationDetails();  // 예매 내역 갱신
+        });
+
+        // 영화 목록 요청 및 업데이트
+        $(document).on('click', '.dateHolder li', function () {
+            selectedDate = new Date($(this).find('.date').data('date'));
+            const utcDate = selectedDate.toISOString().split('T')[0];
+
+            $.ajax({
+                url: '/reservation/moviesByDate',
+                method: 'GET',
+                data: { date: utcDate },
+                success: function (response) {
+                    movieList = response.resmovies;
+                    updateMovieList(movieList);
+                },
+                error: function (error) {
+                    console.log('Error fetching resmovies:', error);
+                }
+            });
+        });
+
+        function updateMovieList(resmovies) {
+            $('#movieList').empty();
+
+            if (Array.isArray(resmovies) && resmovies.length > 0) {
+                resmovies.forEach(resmovie => {
+                    const movieLink = $(`<a href="#"><i>${resmovie.age}</i><p>${resmovie.title}</p></a>`);
+
+                    // 영화 항목을 클릭하면 selectedResmovie 값을 설정
+                    movieLink.on('click', function (e) {
+                        e.preventDefault();
+                        selectedResmovie = resmovie;  // 선택한 영화 정보를 저장
+                        selectedResmovieId = resmovie.id;  // 선택한 영화 ID
+                        selectedResmovieImage = resmovie.posterUrl;
+
+                        console.log('Selected Movie:', selectedResmovie);
+                        console.log('넘기기전 이미지:', selectedResmovieImage);
+                        updateReservationDetails();  // 예매 내역 갱신
+
+                        // 영화가 선택된 후, 해당 지역과 극장을 순차적으로 활성화
+                        selectRegionBasedOnMovie(resmovie);  // 지역 활성화
+                        selectTheaterBasedOnRegion(resmovie);  // 극장 활성화
+                    });
+
+                    $('#movieList').append(movieLink);
+                });
+            } else {
+                $('#movieList').append('<p>No movies available for this date.</p>');
+            }
+        }
+
+       // 영화에 해당하는 지역을 선택하고, 그 지역의 서브 메뉴를 보이게 하는 함수
+        function selectRegionBasedOnMovie(resmovie) {
+             $('.three-depth-tab-menu > ul > li > a').on('click', function (e) {
+                e.preventDefault();
+
+                // 클릭된 지역 링크에 active 클래스를 추가
+                const regionLink = $(this);
+
+                // 모든 지역에서 active 클래스를 제거하고 sub1 메뉴 숨기기
+                $('.three-depth-tab-menu > ul > li > a').removeClass('active');
+                $('.three-depth-tab-menu .sub1').hide();
+
+                // 클릭된 지역에 active 클래스를 추가하고, 해당 지역의 sub1 메뉴만 보이게 함
+                regionLink.addClass('active');
+                regionLink.siblings('.sub1').stop(true, true).fadeIn();
+            });
+        }
+
+
+        const fixedShowtimes = ['07:00', '10:20', '13:40', '17:00', '20:20'];  // 고정된 상영 시간
+
+        // 극장 선택 후 상영 시간 출력
+        $(document).on('click', '.three-depth-tab-menu .sub1 > li > a', function (e) {
+            e.preventDefault();
+
+            if (!$(this).hasClass('active')) {
+                // 선택한 a 요소에 active 클래스가 없으면, 기존에 active 클래스를 제거하고 새로 선택한 항목에 active 클래스 추가
+                $('.three-depth-tab-menu .sub1 > li > a').removeClass('active');
+                $(this).addClass('active');
+            }
+
+            selectedRestheater = $(this).text();
+            selectedRestheaterId = $(this).data('restheater-id'); // 선택한 극장 ID
+            updateReservationDetails();  // 예매 내역 갱신
+
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes(); // 현재 시간 (분 단위)
+
+            const additionalTimesContainer = $('#additionalTimesContainer');
+            additionalTimesContainer.empty();
+
+            fixedShowtimes.forEach(time => {
+                const [hour, minute] = time.split(':').map(num => parseInt(num));
+                const timeInMinutes = hour * 60 + minute;
+
+                const timeLink = $('<a href="#">').text(time);
+
+                 // 선택된 날짜의 시간과 비교하기 위해 'selectedDate'와 상영 시간 비교
+                const selectedDateTime = new Date(selectedDate);
+                selectedDateTime.setHours(hour);
+                selectedDateTime.setMinutes(minute);
+
+                // 현재 시간이 선택된 날짜의 상영 시간보다 이전인 경우 비활성화
+                if (selectedDateTime < now) {
+                    timeLink.addClass('disabled');  // 현재 시간보다 이전은 disabled 처리
+                    timeLink.css('color', 'grey');
+                } else {
+                    timeLink.on('click', function(e) {
+                        e.preventDefault();
+                        $('.time > div > a').removeClass('active');
+                        $(this).addClass('active');
+                        selectedTime = time;  // 선택된 시간을 저장
+                        updateReservationDetails();  // 예매 내역 갱신
+                    });
+                }
+
+                additionalTimesContainer.append(timeLink);
+            });
+        });
+
+
+        // 예매 내역 갱신 함수
+        function updateReservationDetails() {
+            let detailsHtml = `<h3>예매 내역</h3><table>`;
+            if (selectedDate) detailsHtml += `<tr><th>날짜</th><td>${selectedDate.toLocaleDateString()}</td></tr>`; // UTC 대신 로컬 날짜로 표시
+            if (selectedResmovie) detailsHtml += `<tr><th>영화</th><td>${selectedResmovie.title}</td></tr>`;
+            if (selectedArea) detailsHtml += `<tr><th>지역</th><td>${selectedArea}</td></tr>`;
+            if (selectedRestheater) detailsHtml += `<tr><th>극장</th><td>${selectedRestheater}</td></tr>`;
+            if (selectedTime) detailsHtml += `<tr><th>시간</th><td>${selectedTime}</td></tr>`;
+            detailsHtml += '</table>';
+            $('#reservationDetails').html(detailsHtml);
+        }
+
+         // 쿠키에서 CSRF 토큰을 가져오는 함수
+        function getCsrfToken() {
+            let csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='));
+            if (csrfToken) {
+                return csrfToken.split('=')[1];  // 'XSRF-TOKEN' 쿠키 값 반환
+            } else {
+                console.error("CSRF 토큰을 쿠키에서 찾을 수 없습니다.");
+                return null;
+            }
+        }
+
+    // 로그인된 사용자 정보 가져오기 (예: Spring Security에서 제공하는 방식)
+        function getUserId() {
+            // 로그인된 사용자의 ID를 가져오는 로직 필요 (예: 세션이나 인증된 사용자 정보에서 가져오기)
+            return 'user123';  // 예시로 'user123'을 사용 (실제 값은 서버에서 제공)
+        }
+
+    // 예시: 예약 버튼 클릭 시 CSRF 토큰을 헤더에 포함하여 AJAX 요청 보내기
+    $('#bookReservation').on('click', function () {
+
+        // 로그인된 사용자 ID 가져오기
+            userId = getUserId();  // 실제 구현에서는 로그인된 사용자의 ID를 가져와야 함
+            console.log('사용자아이디:', userId);
+
+        $.ajax({
+            url: '/reservation/book1',
+            method: 'POST',
+            contentType: 'application/json',
+            headers: {
+                'X-XSRF-TOKEN': getCsrfToken()  // CSRF 토큰을 요청 헤더에 추가
+            },
+            data: JSON.stringify({
+                // 예매 데이터
+                date: selectedDate.toISOString().split('T')[0],  // 예시로 날짜 추가
+                resmovie: selectedResmovie.title,
+                resmovieId: selectedResmovieId,
+                resmovieImage: selectedResmovieImage,
+                area: selectedArea,
+                restheater: selectedRestheater,
+                restheaterId: selectedRestheaterId,
+                time: selectedTime,
+                userId: userId
+            }),
+            success: function (response) {
+                if (response.success) {
+                    // 예약 성공 처리
+                    window.location.href = `/reservation/seat?reservationId=${response.reservationId}&date=${selectedDate.toISOString()}&movie=${selectedResmovie.title}&theater=${selectedRestheater}&time=${selectedTime}&resmovieImage=${selectedResmovieImage}`;
+                    const reservationId = new URLSearchParams(window.location.search).get('reservationId');
+                    console.log('reservationId:', reservationId);  // 로그를 출력해 보세요.
+                } else {
+                    alert('예약 처리에 실패했습니다.');
+                }
+            },
+            error: function (error) {
+                console.error('예약 실패:', error);
+                alert('서버 오류로 예약을 완료할 수 없습니다.');
+            }
+        });
+    });
+    });
+</script>
+
+
+</body>
+</html>

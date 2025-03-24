@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/support.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movie.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/userAndStore.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/reservation.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/seat.css}">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js}"></script>
+    <script th:src="@{https://kit.fontawesome.com/1083064ac2.js}" crossorigin="anonymous}"></script>
+</head>
+<body>
+    <nav th:replace="navbar :: navbarFragment"></nav>
+    <div class="burger">
+        <div class="center">
+            <h2>SITEMAP</h2>
+            <div class="menu-list">
+                <ul>
+                    <div class="ul-title"><h3>영화</h3></div>
+                    <li><a th:href="@{/movie}">전체영화</a></li>
+                </ul>
+                <ul>
+                    <div class="ul-title"><h3>예매</h3></div>
+                    <li><a th:href="@{/reservation}">빠른예매</a></li>
+                </ul>
+                <ul>
+                    <div class="ul-title"><h3>극장</h3></div>
+                    <li><a th:href="@{/theater/theater1}">전체극장</a></li>
+                </ul>
+                <ul>
+                    <div class="ul-title"><h3>스토어</h3></div>
+                    <li><a th:href="@{/store}">전체상품</a></li>
+                    <li><a th:href="@{/store}">기가티켓</a></li>
+                    <li><a th:href="@{/store}">팝콘/음료</a></li>
+                    <li><a th:href="@{/store}">영화굿즈</a></li>
+                </ul>
+                <ul>
+                    <div class="ul-title"><h3>나의 기가박스</h3></div>
+                    <li><a th:href="@{/store}">마이페이지</a></li>
+                    <li><a th:href="@{/reservation/final}">예매내역</a></li>
+                    <li><a th:href="@{/cart/cart}">스토어구매내역</a></li>
+                    <li><a th:href="@{/qna/list}">나의문의내역</a></li>
+                    <li><a th:href="@{/user/verify}">회원정보</a></li>
+                </ul>
+                <ul>
+                    <div class="ul-title"><h3>고객센터</h3></div>
+                    <li><a th:href="@{/support/home}">고객센터 홈</a></li>
+                    <li><a th:href="@{/faq}">자주묻는질문</a></li>
+                    <li><a th:href="@{/support/support_list}">공지사항</a></li>
+                    <li><a th:href="@{/qna/create}">1:1문의</a></li>
+                </ul>
+                <button id="closeMenu">
+                    <img th:src="@{/img/close_icon-white.png}">
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <th:block layout:fragment="content"></th:block>
+    <footer th:replace="~{footer::footerFragment}"></footer>
+    <script th:src="@{/js/jquery-3.7.1.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/support.js}"></script>
+    <script th:src="@{/js/movie.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <th:block layout:fragment="script"></th:block>
+</body>
+</html>

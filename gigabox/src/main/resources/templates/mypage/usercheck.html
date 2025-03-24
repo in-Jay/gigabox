@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="usercheck">
+
+    <div class="center flex">
+        <div class="boardlist">
+            <div class="support-list">
+                <div class="list-title">
+                    <a th:href="@{/mypage}">
+                        <p>나의 기가박스</p>
+                    </a>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><a th:href="@{/reservation/final}">
+                            <p>예매/구매내역</p>
+                        </a></li>
+                        <li><a th:href="@{/cart/cart}">
+                            <p>스토어 구매내역</p>
+                        </a></li>
+                        <li><a th:href="@{/qna/list}">
+                            <p>나의 문의내역</p>
+                        </a></li>
+                        <li><a th:href="@{/user/verify}">
+                            <p>회원정보<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="list-info">
+
+                </div>
+            </div>
+        </div>
+        <div class="qna-list-cont">
+            <h2>회원정보</h2>
+
+
+        </div>
+
+    </div>
+</div>
+</div>
+<script>
+    // 이메일 확인 버튼 클릭 시
+    $('#checkEmailBtn').on('click', function() {
+        const email = $('#email').val();
+
+        // 이메일이 비어있지 않은지 확인
+        if (!email) {
+            alert('이메일을 입력해주세요.');
+            return;
+        }
+
+        // 이메일 존재 여부 확인을 위한 AJAX 요청
+        $.ajax({
+            url: '/check/email', // 이메일 확인 API URL
+            type: 'POST',
+            data: { email: email },
+            success: function(response) {
+                alert(response); // 이메일이 확인되었을 때 메시지 표시
+                $('#sendPasswordBtn').prop('disabled', false);
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 400) {
+                    alert('일치하는 메일이 없습니다.');
+                   $('#sendPasswordBtn').prop('disabled', ture);
+                } else {
+                    alert('서버 오류가 발생했습니다.');
+                }
+            }
+        });
+    });
+
+    // 임시 비밀번호 발급 버튼 클릭 시
+    $('#sendPasswordBtn').on('click', function() {
+        const email = $('#email').val();
+
+        // 이메일로 임시 비밀번호 발급 요청
+        $.ajax({
+            url: '/send/password', // 임시 비밀번호 발급 API URL
+            type: 'POST',
+            data: { email: email },
+            success: function(response) {
+                alert(response); // 임시 비밀번호 발급 완료 메시지 표시
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 400) {
+                    alert('비밀번호 찾기는 5분에 한 번 가능합니다.');
+                } else {
+                    alert('서버 오류가 발생했습니다.');
+                }
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

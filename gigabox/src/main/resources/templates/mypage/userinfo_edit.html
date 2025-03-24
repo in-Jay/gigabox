@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="info-edit">
+  <div class="center">
+    <div class="boardlist">
+      <div class="support-list">
+        <div class="list-title">
+          <a th:href="@{/mypage}">
+            <p>나의 기가박스</p>
+          </a>
+        </div>
+        <div class="list">
+          <ul>
+            <li><a th:href="@{/reservation/final}">
+              <p>예매/구매내역</p>
+            </a></li>
+            <li><a th:href="@{/cart/cart}">
+              <p>스토어 구매내역</p>
+            </a></li>
+            <li><a th:href="@{/qna/list}">
+              <p>나의 문의내역</p>
+            </a></li>
+            <li><a th:href="@{/user/verify}">
+              <p>회원정보<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+            </a></li>
+          </ul>
+        </div>
+        <div class="list-info">
+
+        </div>
+      </div>
+    </div>
+    <div class="edit-form">
+      <h2>개인정보 수정</h2>
+      <p>* 회원님의 정보를 정확히 입력해주세요.</p>
+      <form class="form" th:action="@{/user/modify}" th:object="${userCreateForm}" method="post">
+      <table>
+        <tr>
+          <th>아이디</th>
+          <td><input type="text" th:value="${username}" readonly class="form-control"/></td>
+
+        </tr>
+        <tr>
+          <th>비밀번호</th>
+          <td><a th:href="@{/user/reset_pass}">비밀번호 변경</a></td>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <td>
+            <input type="text" th:field="*{realname}" class="form-control" placeholder="이름을 입력해주세요.">
+            <div class="danger" th:if="${#fields.hasErrors('realname')}" th:errors="*{realname}"></div>
+          </td>
+
+        </tr>
+        <tr>
+          <th>생년월일</th>
+          <td>  <input type="text" th:value="${formattedBirthdate}" readonly class="form-control" /></td>
+        </tr>
+        <tr>
+          <th>이메일</th>
+          <td><input type="email" th:field="*{email}" class="form-control">
+            <div class="danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div class="login-abox flex">
+              <button type="submit">정보수정</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      </form>
+    </div>
+
+  </div>
+</div>
+<script layout:fragment="script" type="text/javascript">
+
+</script>
+</body>
+</html>

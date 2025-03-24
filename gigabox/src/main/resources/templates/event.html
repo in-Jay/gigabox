@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+    <div layout:fragment="content" class="event">
+        <div class="wrap">
+            <h2 class="center">진행중인 이벤트</h2>
+            <div class="slide-section">
+                <div class="center">
+                    <h3>추천 이벤트</h3>
+                    <div class="swiper eventSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="#" class="eventAlarm">
+                                    <img th:src="@{/img/event5.jpg}" alt="이벤트 이미지">
+                                    <div class="event-slide-text " style="left:none; right:30px; text-align:right;">
+                                        <p>페이페이 X 기가박스</p>
+                                        <span>페이페이 영화 예매하고<br>포인트 적립 받기!</span>
+                                    </div>
+                                    <div class="event-des">
+                                        <p>[페이페이] 페이페이 첫 결제 시 포인트 2천점 적립</p>
+                                        <i>2024.12.03 ~ 2024.12.31</i>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#" class="eventAlarm">
+                                    <img th:src="@{/img/event6.jpg}" alt="이벤트 이미지">
+                                    <div class="event-slide-text">
+                                        <p>알뜰폰 X 기가박스</p>
+                                        <span>알뜰폰 멤버십<br>기가박스 할인</span>
+                                    </div>
+                                    <div class="event-des">
+                                        <p>[알뜰폰] 멤버십 전용 기가박스 할인!</p>
+                                        <i>2024.11.03 ~ 2024.12.31</i>
+                                    </div>
+
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#" class="eventAlarm">
+                                    <img th:src="@{/img/event11.jpg}" alt="이벤트 이미지">
+                                    <div class="event-slide-text" style="color:#fff;" >
+                                        <p>극장 개장 기념</p>
+                                        <span style="color:#fff;">조금 이른<br>새해 선물?!</span>
+                                    </div>
+                                    <div class="event-des">
+                                        <p>[극장 개장 기념] 상봉 방문 이벤트</p>
+                                        <i>2024.12.23 ~ 2025.01.22</i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#" class="eventAlarm">
+                                    <img th:src="@{/img/event13.jpg}" alt="이벤트 이미지">
+                                    <div class="event-slide-text" style="color:#fff;">
+                                        <p>관람 경품 이벤트</p>
+                                        <span style="color:#fff;"><검은집>을<br>기억하는 방법</span>
+                                    </div>
+                                    <div class="event-des">
+                                        <p>[관람 경품 이벤트] <검은집>을 기억하는 방법</p>
+                                        <i>2024.12.24 ~ 2025.01.15</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="eventSwiper-button-next"></div>
+                        <div class="eventSwiper-button-prev"></div>
+                        <div class="eventSwiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="center">
+                <h3>기가Pick</h3>
+                <div class="giga-pick flex">
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5>애니메이션 보면<br>포인트 더블적립</h5>
+                                <img th:src="@{/img/event7.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span>애니메이션 영화 관람하면 포인트 더블적립!</span>
+                                <p>2024.12.26 ~ 2025.01.10</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5>SNS 리뷰 작성 시<br>관람권 1매 증정</h5>
+                                <img th:src="@{/img/event8.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span>[킨텍스] 리뷰 작성 고객 관람권 증정이벤트</span>
+                                <p>2024.12.09 ~ 2025.08.28</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5>통신사 멤버십<br>기가박스 할인</h5>
+                                <img th:src="@{/img/event9.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span>[통신사] 멤버십 전용 기가박스 할인!</span>
+                                <p>2024.06.20 ~ 2025.12.31</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5>선호지점 설정하고<br>럭키 패키지 겟하자!</h5>
+                                <img th:src="@{/img/event10.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span>[남춘천] 1순위 선호지점 설정하고 럭키 패키지 겟하자!</span>
+                                <p>2024.12.20 ~ 2025.01.20</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <h3>영화</h3>
+                <div class="movie-event flex">
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5><겟아웃:마지막 기회><br>개봉주 무대인사</h5>
+                                <img th:src="@{/img/event17.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span><겟아웃:마지막 기회> 개봉주 무대인사</span>
+                                <p>2025.01.01 ~ 2025.01.10</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5><더 에프터 디너><br>프리미어 상영회</h5>
+                                <img th:src="@{/img/event16.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span><더 에프터 디너> 프리미어 상영회</span>
+                                <p>2025.01.01 ~ 2025.01.10</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5><방과후의 하루><br>개봉 전 무대인사</h5>
+                                <img th:src="@{/img/event20.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span><방과후의 하루> 개봉 전 무대인사</span>
+                                <p>2025.01.11 ~ 2025.01.15</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="case">
+                        <a href="#" class="eventAlarm">
+                            <div class="case-img">
+                                <h5><기적을 만날 확률><br>3주차 감사 증정 이벤트</h5>
+                                <img th:src="@{/img/event19.jpg}" alt="event">
+                            </div>
+                            <div class="case-text">
+                                <span><기적을 만날 확률> 3주차 감사 증정 이벤트</span>
+                                <p>2025.01.20 ~ 2025.01.24</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script layout:fragment="script" type="text/javascript">
+        $(document).ready(function() {
+      // 링크 클릭 시 알림창 띄우고 이동 방지
+      $('.eventAlarm').click(function(event) {
+        event.preventDefault(); // 링크 이동 방지
+        alert("현재 해당 페이지는 준비 중입니다. \n곧 더 나은 서비스를 제공할 수 있도록 노력하겠습니다!");
+      });
+    });
+    </script>
+</body>
+</html>

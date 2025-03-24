@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where Stories Live, 기가박스</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 라이브러리 추가 -->
+</head>
+<body>
+<div layout:fragment="content" class="auth-area">
+    <div class="center-40">
+        <div class="logo">
+            <img th:src="@{/img/logo-sample-purple.png}">
+        </div>
+        <h2>아이디/비밀번호 찾기</h2>
+        <div class="auth">
+            <ul class="auth-title">
+                <li><a href="#auth01">아이디찾기</a></li>
+                <li><a href="#auth02">비밀번호찾기</a></li>
+            </ul>
+            <div class="auth-content">
+                <div id="auth01" class="authCont">
+                    <h3>간편찾기</h3>
+                    <form class="findIdForm">
+                        <table>
+                            <!-- 아이디 입력 필드 -->
+                            <tr>
+                                <th><label for="realname">이름:</label></th>
+                                <td><input type="text" id="realname" name="realname" required></td>
+                            </tr>
+                            <tr>
+                                <th><label for="birthdate">생년월일:</label></th>
+                                <td><input type="date" id="birthdate" name="birthdate" required></td>
+                            </tr>
+                            <tr>
+                                <th><label for="emailId">이메일:</label></th>
+                                <td><input type="email" id="emailId" name="emailId" required></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="join_btn flex">
+                                        <button type="button" id="checkUserBtn">본인인증</button>
+                                        <button type="button" id="sendIdBtn" disabled>아이디찾기</button><!-- 수정: 버튼 클릭 시 이메일 확인 -->
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                        </form>
+
+                </div>
+                <div id="auth02" class="authCont">
+                    <!-- 이메일 입력 폼 -->
+                    <h3>간편찾기</h3>
+                    <table>
+                        <tr>
+                            <th><label for="email">이메일: </label></th>
+                            <td><input type="email" id="email" name="email" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="join_btn flex">
+                                    <button id="checkEmailBtn">이메일 확인</button>
+                                    <button type="button" id="sendPasswordBtn" disabled>비밀번호 찾기</button>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    </table>
+                    <div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script layout:fragment="script" type="text/javascript" >
+    $('#checkEmailBtn').on('click', function(event) {
+        event.preventDefault(); // 기본 이벤트(폼 제출 등)를 막음
+
+        const email = $('#email').val();
+
+        // 이메일이 비어있지 않은지 확인
+        if (!email) {
+            alert('이메일을 입력해주세요.');
+            return;
+        }
+
+        // 이메일 존재 여부 확인을 위한 AJAX 요청
+        $.ajax({
+            url: '/check/email', // 이메일 확인 API URL
+            type: 'POST',
+            data: { email: email },
+            success: function(response) {
+                alert(response); // 이메일이 확인되었을 때 메시지 표시
+                $('#sendPasswordBtn').prop('disabled', false);
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 400) {
+                    alert('일치하는 메일이 없습니다.');
+                   $('#sendPasswordBtn').prop('disabled', ture);
+                } else {
+                    alert('서버 오류가 발생했습니다.');
+                }
+            }
+        });
+    });
+
+    // 임시 비밀번호 발급 버튼 클릭 시
+    $('#sendPasswordBtn').on('click', function() {
+        const email = $('#email').val();
+
+        // 이메일로 임시 비밀번호 발급 요청
+        $.ajax({
+            url: '/send/password', // 임시 비밀번호 발급 API URL
+            type: 'POST',
+            data: { email: email },
+            success: function(response) {
+                alert(response); // 임시 비밀번호 발급 완료 메시지 표시
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 400) {
+                    alert('비밀번호 찾기는 5분에 한 번 가능합니다.');
+                } else {
+                    alert('서버 오류가 발생했습니다.');
+                }
+            }
+        });
+    });
+
+    // tab 변경
+     function initTabs() {
+            $('.auth-content > div').hide();
+            $('.auth-title a').click(function () {
+                $('.auth-content > div').hide().filter(this.hash).fadeIn();
+                $('.auth-title a').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            }).filter(':eq(0)').click();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initTabs();
+        });
+
+    // 이메일 확인 버튼 클릭 시
+$('#checkUserBtn').on('click', function() {
+    const email = $('#emailId').val();
+    const realname = $('#realname').val();
+    const birthdate = $('#birthdate').val();
+
+    // 이메일, 이름, 생년월일이 비어있지 않은지 확인
+    if (!email || !realname || !birthdate) {
+       alert('모든 필드를 입력해주세요.');
+        return;
+    }
+
+    // 이메일 확인을 위한 AJAX 요청
+    $.ajax({
+        url: '/check/user', // 이메일 확인을 위한 API URL (실제 이메일과 함께 유효성 확인)
+        type: 'POST',
+        data: { emailId: email, realname: realname, birthdate: birthdate },
+        success: function(response) {
+            alert('회원정보가 확인되었습니다.'); // 이메일이 확인되었을 때 메시지 표시
+            $('#sendIdBtn').prop('disabled', false); // 아이디 발송 버튼 표시
+        },
+        error: function(xhr, status, error) {
+            if (xhr.status === 400) {
+                alert('일치하는 회원 정보가 없습니다.');
+                $('#sendIdBtn').prop('disabled', true); // 일치하는 정보가 없으면 아이디 발송 버튼 숨기기
+            } else {
+                alert('서버 오류가 발생했습니다.');
+            }
+        }
+    });
+});
+
+// 아이디 발송 버튼 클릭 시
+$('#sendIdBtn').on('click', function() {
+    const email = $('#emailId').val();
+
+    // 이메일로 아이디 발송 요청
+    $.ajax({
+        url: '/send/id', // 아이디 발송을 위한 API URL
+        type: 'POST',
+        data: { emailId: email },
+        success: function(response) {
+            alert(response); // 아이디 발송 완료 메시지 표시
+        },
+        error: function(xhr, status, error) {
+            if (xhr.status === 400) {
+                alert('일치하는 아이디가 없습니다.');
+            } else {
+                alert('메일 발송 중 오류가 발생했습니다.');
+            }
+        }
+    });
+});
+
+</script>
+</body>
+</html>

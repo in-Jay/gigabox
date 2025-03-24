@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>예약내역</title>
+</head>
+<body>
+<div layout:fragment="content" class="final-reservation">
+
+    <div class="center">
+        <div class="boardlist">
+            <div class="support-list">
+                <div class="list-title">
+                    <a th:href="@{/mypage}">
+                        <p>나의 기가박스</p>
+                    </a>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><a th:href="@{/reservation/final}">
+                            <p>예매/구매내역</p>
+                        </a></li>
+                        <li><a th:href="@{/cart/cart}">
+                            <p>영화/스토어관람권</p>
+                        </a></li>
+                        <li><a th:href="@{/qna/list}">
+                            <p>나의 문의내역</p>
+                        </a></li>
+                        <li><a th:href="@{/user/verify}">
+                            <p>회원정보</p>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="list-info">
+
+                </div>
+            </div>
+        </div>
+        <div class="list-wrap">
+            <h2>예약 내역</h2>
+
+            <div th:if="${reservations.isEmpty()}">
+                <p>예약 내역이 없습니다.</p>
+            </div>
+
+            <div th:if="${!reservations.isEmpty()}" class="final-list">
+                <table th:each="reservation : ${reservations}">
+                    <tr>
+                        <td rowspan="4" style="width:100px;">
+                            <!-- 영화 이미지 출력 -->
+                            <img th:src="${reservation.resmovieImage}" alt="영화 이미지" style="width: 100px; height: auto;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>영화명</th>
+                        <td th:text="${reservation.resmovie}"></td>
+                    </tr>
+                    <tr>
+                        <th>극장/상영관</th>
+                        <td th:text="${reservation.restheater}" style="width:230px;"></td>
+                        <th>관람인원</th>
+                        <td class="personnel" style="width:230px;">
+                            <p th:if="${#lists.size(reservation.seats) > 0}" th:text="'어른 : ' + ${reservation.seats[0].adultnum}"></p>
+                            <p th:if="${#lists.size(reservation.seats) > 0}" th:text="'청소년 : ' + ${reservation.seats[0].youthnum}"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>관람일시</th>
+                        <td th:text="${reservation.date +' '+reservation.time}" style="width:230px;"></td>
+                        <th>관람좌석</th>
+                        <td style="width:230px;">
+                            <span th:each="seat : ${reservation.seats}" style="white-space: nowrap; display: inline-block; margin-right: 10px;" th:text="${seat.seat}"></span>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

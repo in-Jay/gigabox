@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+  <div layout:fragment="content" class="support-qna">
+    <div class="center">
+      <div class="boardlist">
+        <div class="support-list">
+          <div class="list-title">
+            <a th:href="@{/support/home}">
+              <p>고객센터</p>
+            </a>
+          </div>
+          <div class="list">
+            <ul>
+              <li><a th:href="@{/support/home}">
+                <p>고객센터 홈</p>
+              </a></li>
+              <li><a th:href="@{/faq}">
+                <p>자주 묻는 질문</p>
+              </a></li>
+              <li><a th:href="@{/support/support_list}">
+                <p>공지사항</p>
+              </a></li>
+              <li><a th:href="@{/qna/create}">
+                <p>1:1 문의<i><img th:src="@{/img/right-arrow-icon.svg}"></i></p>
+              </a></li>
+            </ul>
+          </div>
+          <div class="list-info">
+            <p>기가박스 고객센터</p>
+            <span>Dream center</span>
+            <p><i><img th:src="@{/img/clock.png}"></i>10:00 ~ 19:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="qna-write">
+          <h2>1:1 문의</h2>
+          <div class="qna-notice">
+            <ul>
+              <li>
+                <p>• 고객님의 문의에 답변하는 직원은 <span>고객 여러분의 가족 중 한 사람일 수 있습니다.</span></p>
+                <p>&nbsp;&nbsp;고객의 언어폭력(비하, 욕설, 협박, 성희롱 등)으로부터 직원을 보호하기 위해 <br>
+                  &nbsp;&nbsp;관련 법에 따라 수사기관에 필요한 조치를 요구할 수 있으며, 형법에 의해 처벌 대상이 될 수 있습니다.</p><br>
+                <p>• 문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="consent">
+            <div class="consent-title">
+              <input type="checkbox" id="infoSubmit">
+              <label for="infoSubmit">개인정보 수집에 대한 동의 <span>[필수]</span></label>
+            </div>
+            <div class="consent-cont">
+              <p>
+                귀하께서 문의하신 다음의 내역은 법률에 의거 개인정보 수집·이용에 대한 본인동의가 필요한 항목입니다.
+                <br><br>
+                [개인정보의 수집 및 이용목적]<br>
+                회사는 1:1 문의 내역의 확인, 요청사항 처리 또는 완료 시 원활한 의사소통 경로 확보를 위해 수집하고 있습니다.
+                <br><br>
+                [필수 수집하는 개인정보의 항목]<br>
+                이름, 휴대전화, 이메일, 문의내용
+                <br><br>
+                [개인정보의 보유기간 및 이용기간]<br>
+                <b>
+                  문의 접수 ~ 처리 완료 후 3년<br>
+                  (단, 관계법령의 규정에 의하여 보존 할 필요성이 있는 경우에는 관계 법령에 따라 보존)<br>
+                  자세한 내용은 '개인정보 처리방침'을 확인하시기 바랍니다.
+                </b>
+              </p>
+            </div>
+          </div>
+          <p>* 원활한 서비스 이용을 위한 최소한의 개인정보이므로 동의하지 않을 경우 서비스를 이용하실 수 없습니다.</p>
+          <span class="ess">* 필수</span>
+          <form th:action="@{/qna/create}" th:object="${qnaForm}" method="post">
+            <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}">
+            <table>
+              <tr>
+                <th>문의선택<span>*</span></th>
+                <td>
+                  <input type="radio" id="service-qna" value="고객센터문의" th:field="*{qnaType}" th:checked="${qnaForm.qnaType == '고객센터문의'}">
+                  <label for="service-qna">고객센터문의</label>
+                  &nbsp;
+                  <input type="radio" id="theater-qna" value="극장별문의" th:field="*{qnaType}">
+                  <label for="theater-qna">극장별문의</label>
+                  <button type="button" value="문의유형 선택"></button>
+                </td>
+              </tr>
+              <tr>
+                <th>문의유형<span>*</span></th>
+                <td>
+                  <select th:field="*{qnaSelect}">
+                    <option value="영화정보문의" th:selected="${qnaForm.qnaSelect == '영화정보문의'}">영화정보문의</option>
+                    <option value="회원 및 포인트문의" th:selected="${qnaForm.qnaSelect == '회원 및 포인트문의'}">회원 및 포인트문의</option>
+                    <option value="예매/결제관련문의" th:selected="${qnaForm.qnaSelect == '예매/결제관련문의'}">예매/결제관련문의</option>
+                    <option value="이벤트문의" th:selected="${qnaForm.qnaSelect == '이벤트문의'}">이벤트문의</option>
+                    <option value="일반문의" th:selected="${qnaForm.qnaSelect == '일반문의'}">일반문의</option>
+                    <option value="제안/건의" th:selected="${qnaForm.qnaSelect == '제안/건의'}">제안/건의</option>
+                  </select>
+                  <div th:if="${#fields.hasErrors('qnaSelect')}" th:errors="*{qnaSelect}" role="alert"></div>
+                </td>
+              </tr>
+              <tr>
+                <th>이름<span>*</span></th>
+                <td>
+                  <input type="text" name="username" th:field="*{username}">
+                  <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" role="alert"></div>
+                </td>
+              </tr>
+              <tr>
+                <th>제목<span>*</span></th>
+                <td>
+                  <input type="text" name="subject" th:field="*{subject}" placeholder="제목을 입력해 주세요.">
+                  <div th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" role="alert"></div>
+                </td>
+              </tr>
+              <tr>
+                <th>내용<span>*</span></th>
+                <td>
+                  <textarea name="content" th:field="*{content}" rows="10" cols="100" placeholder="내용을 작성해 주세요"></textarea>
+                  <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" role="alert"></div>
+                </td>
+              </tr>
+              <tr>
+                <th>사진첨부</th>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="submitBtns">
+                  <button type="submit" id="submitBtn" disabled>등록</button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+    </div>
+  </div>
+  <script layout:fragment="script" type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+       // 체크박스와 버튼 요소를 가져옵니다
+       const checkbox = document.getElementById('infoSubmit');
+       const submitButton = document.getElementById('submitBtn');
+
+       // 체크박스 상태가 변경될 때마다 호출되는 함수
+       checkbox.addEventListener('change', function() {
+           // 체크박스가 체크되었으면 버튼을 활성화, 아니면 비활성화
+           submitButton.disabled = !checkbox.checked;
+       });
+
+       // 페이지가 로드되었을 때 체크박스 상태에 따라 버튼 활성화/비활성화 처리
+       submitButton.disabled = !checkbox.checked;
+   });
+  </script>
+</body>
+</html>

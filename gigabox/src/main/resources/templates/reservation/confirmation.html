@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 확인</title>
+</head>
+<body>
+<div layout:fragment="content" class="cart">
+    <div class="center">
+        <div class="cart-list">
+            <h2>예약이 완료되었습니다!</h2>
+            <div class="cart-box">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="width:30%;">
+                                <img th:src="${selectedResmovieImage}" alt="영화 포스터">
+                            </td>
+                            <td style="width:70%;">
+                                <ul>
+                                    <li>
+                                        <span style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:16px;">관람일시 : </span>
+                                        <p th:text="${selectedDate + ' ' + selectedTime}" style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:15px;"></p>
+                                    </li>
+                                    <li>
+                                        <span style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:16px;">영화명 : </span>
+                                        <p th:text="${selectedResmovie}" style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:15px;"></p>
+                                    </li>
+                                    <li>
+                                        <span style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:16px;">극장명 : </span>
+                                        <p th:text="${selectedRestheater}" style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:15px;"></p>
+                                    </li>
+                                    <li>
+                                        <span style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:16px;">관람좌석 : </span>
+                                        <p th:each="seat : ${selectedSeats}" th:text="${seat}" style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:15px;"></p>
+                                    </li>
+                                    <li>
+                                        <span style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:16px;">인원 : </span>
+                                        <p th:text="${'일반 : ' + adultnum + '명'}" style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:15px;"></p>
+                                        <p th:text="${'학생 : ' + youthnum + '명'}" style="white-space: nowrap; display: inline-block; margin-right: 10px; font-size:15px;"></p>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="pay-box">
+            <div class="pay-box-top">
+                <h2>결제금액</h2>
+                <div class="cost">
+                    <p>일반 요금</p>
+                    <span th:text="${session.formattedAdultPrice != null ? session.formattedAdultPrice : '0'}">0원</span>
+                </div>
+                <div class="plus-round"><p>+</p></div>
+                <div class="cost">
+                    <p>학생 요금</p>
+                    <p th:text="${session.formattedYouthPrice != null ? session.formattedYouthPrice : '0'}">0원</p>
+                </div>
+            </div>
+            <div class="pay-box-bottom">
+                <div class="final-cost">
+                    <h5>최종결제금액</h5>
+                    <p th:text="${session.formattedTotalPrice != null ? session.formattedTotalPrice : '0'}">0원</p>
+                </div>
+                <div class="pay-btns">
+                    <ul>
+                        <li><a th:href="@{/reservation}" class="delete-btn" th:data-id="${reservationId}">취소</a></li>
+                        <li><a href="#">결제</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script layout:fragment="script" type="text/javascript">
+    // 삭제 버튼 클릭 시
+ $(".delete-btn").click(function() {
+    let reservationId = $(this).data("id");
+    console.log("삭제할 reservationId: " + reservationId); // reservationId 로그 확인
+    $.ajax({
+        url: "/reservation/delete/" + encodeURIComponent(reservationId),  // URL 인코딩 추가
+        type: "POST",
+        success: function(response) {
+            alert(response);  // 성공 메시지
+            location.reload();  // 예매내역 삭제 후 새로고침
+        },
+        error: function(xhr, status, error) {
+            console.error("삭제 실패:", error);  // 실패시 콘솔 오류 확인
+            alert("삭제에 실패했습니다.");
+        }
+    });
+});
+
+
+</script>
+</body>
+</html>

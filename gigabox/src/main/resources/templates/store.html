@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="store">
+    <div class="center">
+        <h1>스토어</h1>
+        <div class="tab">
+            <ul class="tab-title">
+                <li><a href="#tab01">전체상품</a></li>
+                <li><a href="#tab02">메가티켓</a></li>
+                <li><a href="#tab03">팝콘/음료</a></li>
+                <li><a href="#tab04">굿즈</a></li>
+            </ul>
+            <div class="tabcontent">
+                <div id="tab01" class="tabCont">
+                    <a th:href="@{/store/recom}" class="storeRecom">
+                        <div class="recomtxt">
+                            <i>A DAY OF</i>
+                            <h4>COFFEE & MOVIE</h4>
+                            <p>메가박스 스타벅스 데비 텀블러 패키지</p>
+                            <span>관람권(8) + 초대권(2) + 텀블러(1) + 스타벅스 5천원 금액권 + 스타벅스 음료</span>
+                            <b>99,000원</b>
+                        </div>
+                        <div class="recomImg">
+                            <img th:src="@{/img/mega-sbuck.jpg}" alt="상품 이미지">
+                        </div>
+                    </a>
+                    <div class="tab-txt tab-txt-first">
+                        <h4>기가티켓</h4>
+                        <a th:href="@{/}">
+                            <p>더보기</p>
+                            <svg class="feather feather-chevron-right" fill="none" height="24" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+                    </div>
+                    <div class="apiParent">
+                        <div class="apiChild" th:each="item, iterStat : ${storeItem1}" th:if="${iterStat.index < 4}" >
+                            <a th:href="@{/store/detail/{id}(id=${item.id})}">
+
+                                <div class="tab-cont-img">
+                                    <img th:src="${item.image}" th:alt="${item.title}">
+                                </div>
+                                <div class="tab-cont-txt">
+                                    <h3 th:text="${item.title}"></h3>
+                                    <p class="price" th:text="${item.lprice}"></p>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-txt">
+                        <h4>팝콘/음료</h4>
+                        <a th:href="@{/}">
+                            <p>더보기</p>
+                            <svg class="feather feather-chevron-right" fill="none" height="24" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+                    </div>
+                    <div class="apiParent">
+                        <div class="apiChild" th:each="item, iterStat : ${storeItem2}" th:if="${iterStat.index < 4}">
+                            <a th:href="@{/store/detail/{id}(id=${item.id})}">
+                                <div class="tab-cont-img">
+                                    <img th:src="${item.image}" th:alt="${item.title}">
+                                </div>
+                                <div class="tab-cont-txt">
+                                    <h3 th:text="${item.title}"></h3>
+                                    <p class="price" th:text="${item.lprice}"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-txt">
+                        <h4>기가굿즈</h4>
+                        <a th:href="@{/}">
+                            <p>더보기</p>
+                            <svg class="feather feather-chevron-right" fill="none" height="24" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+                    </div>
+                    <div class="apiParent">
+                        <div class="apiChild" th:each="item, iterStat : ${storeItem3}" th:if="${iterStat.index < 4}">
+                            <a th:href="@{/store/detail/{id}(id=${item.id})}">
+                                <div class="tab-cont-img">
+                                    <img th:src="${item.image}" th:alt="${item.title}">
+                                </div>
+                                <div class="tab-cont-txt">
+                                    <h3 th:text="${item.title}"></h3>
+                                    <p class="price" th:text="${item.lprice}"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div id="tab02" class="tabCont">
+                    <div class="apiParent">
+                        <div class="apiChild" th:each="item, iterStat : ${storeItem1}">
+                            <a th:href="@{/store/detail/{id}(id=${item.id})}">
+                                <div class="tab-cont-img">
+                                    <img th:src="${item.image}" th:alt="${item.title}">
+                                </div>
+                                <div class="tab-cont-txt">
+                                    <h3 th:text="${item.title}"></h3>
+                                    <p class="price" th:text="${item.lprice}"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab03" class="tabCont">
+                    <div class="apiParent">
+                        <div class="apiChild" th:each="item: ${storeItem2}">
+                            <a th:href="@{/store/detail/{id}(id=${item.id})}">
+                                <div class="tab-cont-img">
+                                    <img th:src="${item.image}" th:alt="${item.title}">
+                                </div>
+                                <div class="tab-cont-txt">
+                                    <h3 th:text="${item.title}"></h3>
+                                    <p class="price" th:text="${item.lprice}"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab04" class="tabCont">
+                    <div class="apiParent">
+                        <div class="apiChild" th:each="item: ${storeItem3}">
+                            <a th:href="@{/store/detail/{id}(id=${item.id})}">
+                                <div class="tab-cont-img">
+                                    <img th:src="${item.image}" th:alt="${item.title}">
+                                </div>
+                                <div class="tab-cont-txt">
+                                    <h3 th:text="${item.title}"></h3>
+                                    <p class="price" th:text="${item.lprice}"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script layout:fragment="script" type="text/javascript">
+    // 숫자 가격을 형식에 맞게 포맷하는 함수
+    function formatPrice(price) {
+    // 가격을 원화 형식으로 변환 (예: 1000 -> 1,000원)
+    return price.toLocaleString() + '원';
+    }
+    // 페이지 로딩 후 가격 포맷팅
+   document.addEventListener('DOMContentLoaded', function() {
+       const priceElements = document.querySelectorAll('.price'); // 'price' 클래스를 가진 모든 요소를 선택
+
+       priceElements.forEach((element) => {
+           const priceText = element.innerText.trim();
+           if (priceText) {
+               const formattedPrice = formatPrice(parseInt(priceText)); // 숫자로 변환 후 포맷팅
+               element.innerText = formattedPrice; // 포맷팅된 가격을 텍스트로 설정
+           }
+       });
+   });
+
+   function searchObj() {
+           const query = document.getElementById("query").value;
+           fetch(`/api?query=${query}`)
+               .then(response => {
+                   if (!response.ok) {
+                       throw new Error(`HTTP error! status: ${response.status}`);
+                   }
+                   return response.json();
+               })
+               .then(data => {
+
+                   const resultDiv = document.getElementById("result");
+                   resultDiv.innerHTML = '';
+                   data.forEach(item => {
+                       const itemDiv = document.createElement("div");
+                       itemDiv.innerHTML = `
+                           <h3>${item.title}</h3>
+                           <img src="${item.image}" alt="${item.title}">
+                           <p>${item.lprice}원</p>
+                           <a href="${item.link}">구매하기</a>
+                       `;
+                       resultDiv.appendChild(itemDiv);
+                   });
+               })
+               .catch(error => console.error("데이터 가져오기 실패", error));
+       }
+
+       function initTabs() {
+           $('.tabcontent > div').hide();
+           $('.tab-title a').click(function () {
+               $('.tabcontent > div').hide().filter(this.hash).fadeIn();
+               $('.tab-title a').removeClass('active');
+               $(this).addClass('active');
+               return false;
+           }).filter(':eq(0)').click();
+       }
+
+       document.addEventListener('DOMContentLoaded', function() {
+           initTabs();
+       });
+</script>
+</body>
+</html>

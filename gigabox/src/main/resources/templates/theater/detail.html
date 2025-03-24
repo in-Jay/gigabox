@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="theater-detail">
+    <div class="theater-title">
+        <h2 th:text="${theater.theater}"></h2>
+    </div>
+    <div class="center">
+        <h3 th:text="${theater.description}"></h3>
+        <div class="theater-info">
+            <div class="facility-info">
+                <h4>시설안내</h4>
+                <span>보유시설</span>
+                <div class="facility">
+                    <ul>
+                        <li>
+                            <img th:src="@{/img/ico-facility-atmos2.png}" alt="돌비">
+                            <p>DOLBY ATMOS</p>
+                        </li>
+                        <li>
+                            <img th:src="@{/img/ico-facility-theater.png}" alt="일반상영관">
+                            <p>일반상영관</p>
+                        </li>
+                        <li>
+                            <img th:src="@{/img/ico-facility-disabled.png}" alt="장애인석">
+                            <p>장애인석</p>
+                        </li>
+                    </ul>
+                </div>
+                <span>층별안내</span>
+                <p>·<b>4층 : </b>매표소, 매점, 무인발권기, 남녀화장실</p>
+                <p>·<b>5층 : </b>1관~7관, Dolby Atmos관, 남녀 화장실</p>
+            </div>
+            <div class="traffic-info">
+                <h4>교통안내</h4>
+                <span>약도</span>
+                <p>·<b>도로명주소</b><p th:text="${theater.address}" class="addr"></p></p>
+            </div>
+        </div>
+        <span>주차</span>
+        <div class="parking">
+            <div class="parking1 flex">
+                <div class="icon">
+                    <img th:src="@{/img/ico-parking.png}" alt="주차">
+                </div>
+                <div class="txt">
+                    <h5>주차안내</h5>
+                    <p>
+                        ·스타필드 고양 주차장 이용<br>
+                        ·차량 이용 방문 안내 : 북측 주차장 진입 → 4층 2번홀 주차<br>
+                        ·주차장 진입로 (스타필드 고양 주차 안내 참고 (www.starfield.co.kr/goyang/about/parkingInfo.do)<br>
+                        ·주차장에서 오시는 길 : B1~4F 2번 홀 엘리베이터/에스컬레이터 이용<br>
+                        ·도보이용 안내 : 스타필드 서측 '몰리스펫샵' 방면 1번 GATE 이용 (22시 이후 북측 2번 GATE 이용)<br>
+                        ·쇼핑몰 주차장 입차는 오전 7시30분 부터 가능하며, 영화관 이용은 오전 7시 40분 부터 가능합니다.(이전시간 진입불가)<br>
+                        ·쇼핑몰 오픈 전(10시 이전) 입차는 북측 주차장 진입만 가능<br>
+                        ·쇼핑몰 종료 후(22시 이후) 북측 지상 1층 주차장만 이용 가능 / 주차 후 2번홀 엘레베이터 4층 이용
+                    </p>
+                </div>
+            </div>
+            <div class="parking2 flex">
+                <div class="icon">
+                    <img th:src="@{/img/ico-confirm.png}" alt="자차">
+                </div>
+                <div class="txt">
+                    <h5>주차확인</h5>
+                    <p>·건물 주차장 무료 이용 (주차정책 변경시 공지 예정)</p>
+                </div>
+            </div>
+            <div class="parking3 flex">
+                <div class="icon">
+                    <img th:src="@{/img/ico-cash.png}" alt="주차요금">
+                </div>
+                <div class="txt">
+                    <h5>주차요금</h5>
+                    <p>·무료</p>
+                </div>
+            </div>
+        </div>
+        <span>대중교통</span>
+        <div class="transport">
+            <div class="transport1 trans flex">
+                <div class="icon">
+                    <img th:src="@{/img/ico-bus.png}" alt="버스">
+                </div>
+                <div class="txt">
+                    <h5>버스</h5>
+                    <p>
+                        ·703번, 705번, 773번 → 스타필드 고양 하차 후 1번 GATE 진입<br>
+                        ·(마을) 042번, 075A번 → 호반 22단지 정문 하차 후 1번 GATE 진입<br>
+                        ·(마을) 046번, 048번, 053번, 077A번, 093번 → 스타필드 후문 하차 후 1번 GATE 진입
+                    </p>
+                </div>
+            </div>
+            <div class="transport2 trans flex">
+                <div class="icon">
+                    <img th:src="@{/img/ico-metro.png}" alt="지하철">
+                </div>
+                <div class="txt">
+                    <h5>지하철</h5>
+                    <p>·지하철 3호선 ‘삼송역’하차 -> 지하철 3번 출구에서 500M 직진 (도보 8분)</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<script layout:fragment="script" type="text/javascript">
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="movieDetail">
+  <div class="movie-wrap">
+    <div class="movie-page">
+      <div class="bg-pattern"></div>
+      <div class="center">
+        <div class="movie-bg" th:attr="style='background: url(' + ${detail.posterUrl} + '); background-size: cover; background-repeat: no-repeat;'"></div>
+        <div class="movie-cont">
+          <div class="cont-top">
+            <p class="title" th:text="${detail.title}"></p>
+            <p class="d-title" th:text="${detail.dTitle}"></p>
+            <div class="btn-box">
+              <button type="button" class="like-btn" id="likeBtn">
+                <div class="like-img">
+                  <img th:src="@{/img/heart-white.png}">
+                </div>
+                <span>like</span>
+              </button>
+              <div class="res-btn">
+                <button type="button" class="share-btn" id="share-btn">
+                  <div class="share-img">
+                    <img th:src="@{/img/share-white.png}">
+                  </div>
+                  <span>공유하기</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="cont-bottom">
+            <div class="gpa">
+              <p>실관람 평점</p>
+              <div class="gpa2">
+                <i><img th:src="@{/img/megabox-icon.png}"></i>
+                <span th:text="${detail.gpa != null ? T(java.lang.String).format('%.1f', detail.gpa / 10) : 'N/A'}"></span>
+              </div>
+            </div>
+            <div class="rating">
+              <p>예매율</p>
+              <div class="rank-rate">
+                <i><img th:src="@{/img/ticket-icon.png}"></i>
+                <p class="rank" th:text="${detail.ranking}"></p>
+                <span class="rate" th:text="${'위 ('+detail.rate+')'}"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="img-cont">
+          <div class="movie-img">
+            <img th:src="${detail.posterUrl}">
+            <i class="age"
+               th:attr="style='background: url(' +
+    ${detail.age == 'All' ? '/img/ageAll.png' :
+    detail.age == '12' ? '/img/age12.png' :
+    detail.age == '15' ? '/img/age15.png' :
+    detail.age == '18' ? '/img/age18.png' : ''} + '); background-size: 23px 23px; background-repeat: no-repeat; background-position: center;;'"
+               th:text="${detail.age}"></i>
+          </div>
+          <div class="res">
+            <button type="button" onclick="location.href='/reservation'">
+              <a th:href="@{/reservation}">예매</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="center desc">
+      <div class="detail-list">
+        <ul>
+          <li>주요정보</li>
+          <li>실관람평</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p th:text="${detail.story.replace('\n', '<br>')}"></p>
+      </div>
+      <div class="info-box">
+        <div class="info">
+          <div th:if="${detail.director != ''}">
+            <p th:text="${'감독 : '+detail.director}"></p>
+          </div>
+          <div th:if="${detail.genre != ''}">
+            <p th:text="${'장르 : '+detail.genre}"></p>
+          </div>
+          <p th:text="${'기본정보 : '+detail.dInfo.replace(',', '/')}"></p>
+          <p th:text="${'개봉일 : '+detail.date}"></p>
+        </div>
+        <div th:if="${detail.actors != ''}">
+          <p th:text="${'출연진 : '+detail.actors}"></p>
+        </div>
+      </div>
+      <div class="short-review section">
+        <p class="review-count"><span th:text="${detail.title}"></span>에 대한&nbsp;<span class="count" th:text="${reviewCount}"></span>개의 이야기가 있어요!</p>
+        <form th:action="@{|/movie/detail/${detail.movieCode}|}" method="post">
+          <div class="review-area">
+            <div class="mega-profile">
+              <img th:src="@{/img/megabox-profile-icon.png}">
+              <p>MEGABOX</p>
+            </div>
+            <div class="review-in-area">
+              <input name="review" id="review" th:placeholder="${detail.title + '&nbsp;재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.'}" required>
+              <button type="submit">
+                <i><img th:src="@{/img/write-icon.png}"></i>
+                <span>관람평쓰기</span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <!-- 영화 리뷰 출력 -->
+        <div class="review-box" th:if="${detail.reviews.size() > 0}">
+          <ul>
+            <li th:each="review : ${#lists.size(detail.reviews) > 20 ? detail.reviews.subList(0, 20) : detail.reviews}">
+              <div class="user-profile">
+                <img th:src="@{/img/user-profile-icon.png}">
+                <p>USER</p>
+              </div>
+              <div class="review-in-box">
+                <div class="review-title">
+                  <P>관람평</P>
+                </div>
+                <div class="review-cont">
+                  <p th:text="${review.review}"></p>
+                </div>
+                <div class="review-util">
+                  <img th:src="@{/img/review-util-btn-icon.png}">
+                </div>
+              </div>
+              <p class="createDate" th:text="${review.createDate}"></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script layout:fragment="script" type="text/javascript">
+  // 모든 createDate 클래스를 가진 요소들을 가져오기
+   const createDateElements = document.querySelectorAll('.createDate');
+
+   // 상대 시간 계산 함수
+   function timeAgo(date) {
+       const now = new Date();
+       const seconds = Math.floor((now - date) / 1000);
+       const minutes = Math.floor(seconds / 60);
+       const hours = Math.floor(minutes / 60);
+       const days = Math.floor(hours / 24);
+       const months = Math.floor(days / 30);
+       const years = Math.floor(months / 12);
+
+       if (seconds < 60) return `${seconds} 초전`;
+       else if (minutes < 60) return `${minutes} 분전`;
+       else if (hours < 24) return `${hours} 시간전`;
+       else if (days < 30) return `${days} 일전`;
+       else if (months < 12) return `${months} 개월전`;
+       else return `${years} 년전`;
+   }
+
+   // 각 createDate 요소에 대해 상대 시간을 설정
+   createDateElements.forEach(createDateElement => {
+     const createDate = new Date(createDateElement.textContent); // 서버에서 전달받은 날짜
+     createDateElement.textContent = timeAgo(createDate); // 상대 시간으로 변경
+   });
+
+
+</script>
+</body>
+</html>

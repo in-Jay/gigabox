@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js}"></script>
+    <script th:src="@{https://kit.fontawesome.com/1083064ac2.js}" crossorigin="anonymous}"></script>
+    <script th:src="@{/js/jquery-3.7.1.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="burger">
+        <div class="center">
+            <h2>SITEMAP</h2>
+             <div class="menu-list">
+            <ul>
+                <div class="ul-title"><h3>영화</h3></div>
+                <li><a th:href="@{/movie}">전체영화</a></li>
+            </ul>
+            <ul>
+                <div class="ul-title"><h3>예매</h3></div>
+                <li><a th:href="@{/reservation}">빠른예매</a></li>
+            </ul>
+            <ul>
+                <div class="ul-title"><h3>극장</h3></div>
+                <li><a th:href="@{/theater/theater1}">전체극장</a></li>
+            </ul>
+            <ul>
+                <div class="ul-title"><h3>스토어</h3></div>
+                <li><a th:href="@{/store}">전체상품</a></li>
+                <li><a th:href="@{/store}">기가티켓</a></li>
+                <li><a th:href="@{/store}">팝콘/음료</a></li>
+                <li><a th:href="@{/store}">영화굿즈</a></li>
+            </ul>
+            <ul>
+                <div class="ul-title"><h3>나의 기가박스</h3></div>
+                <li><a th:href="@{/store}">마이페이지</a></li>
+                <li><a th:href="@{/reservation/final}">예매내역</a></li>
+                <li><a th:href="@{/cart/cart}">스토어구매내역</a></li>
+                <li><a th:href="@{/qna/list}">나의문의내역</a></li>
+                <li><a th:href="@{/user/verify}">회원정보</a></li>
+            </ul>
+            <ul>
+                <div class="ul-title"><h3>고객센터</h3></div>
+                <li><a th:href="@{/support/home}">고객센터 홈</a></li>
+                <li><a th:href="@{/faq}">자주묻는질문</a></li>
+                <li><a th:href="@{/support/support_list}">공지사항</a></li>
+                <li><a th:href="@{/qna/create}">1:1문의</a></li>
+            </ul>
+            <button id="closeMenu">
+                 <img th:src="@{/img/close_icon-white.png}">
+            </button>
+        </div>
+
+    </div>
+</div>
+    <header class="main-head">
+        <div class="center">
+            <div class="left" style="width:41%;">
+                <div class="top-menu">
+                    <ul>
+                        <li>
+                            <a>&nbsp;</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bottom-menu">
+                    <div class="small-menu">
+                        <ul>
+                            <li id="burgeOpen">
+                                <svg class="feather feather-menu" fill="none" height="24" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" cursor="pointer" xmlns="http://www.w3.org/2000/svg"><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+                            </li>
+                            <li>
+                                <p>&nbsp;</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-menu">
+                        <ul>
+                            <li><a th:href="@{/movie}" style="color:#fff">영화</a></li>
+                            <li><a th:href="@{/reservation}" style="color:#fff">예매</a></li>
+                            <li><a th:href="@{/theater/theater1}" style="color:#fff">극장</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img th:src="@{img/logo-sample.png}" alt="로고">
+                </a>
+            </div>
+            <div class="right" style="width:41%;">
+                <div class="top-menu">
+                    <ul>
+                        <li>
+                            <a sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+                        </li>
+                        <li><a th:href="@{/user/signup}">회원가입</a></li>
+
+                    </ul>
+                </div>
+                <div class="bottom-menu">
+                    <div class="main-menu">
+                        <ul>
+                            <li style="margin:0;"><a th:href="@{/event}" style="color:#fff; ">이벤트</a></li>
+                            <li><a th:href="@{/store}" style="color:#fff">스토어</a></li>
+                            <li><a th:href="@{/support/home}" style="color:#fff">고객센터</a></li>
+                        </ul>
+                    </div>
+                    <div class="small-menu">
+                       <ul>
+                           <li><a th:href="@{/cart/cart}"><img th:src="@{/img/cart-ico-white.png}"></a></li>
+
+                           <li><a th:href="@{/mypage}"><svg data-name="Layer 1" id="Layer_1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><title/><path d="M24,21A10,10,0,1,1,34,11,10,10,0,0,1,24,21ZM24,5a6,6,0,1,0,6,6A6,6,0,0,0,24,5Z"/><path d="M42,47H6a2,2,0,0,1-2-2V39A16,16,0,0,1,20,23h8A16,16,0,0,1,44,39v6A2,2,0,0,1,42,47ZM8,43H40V39A12,12,0,0,0,28,27H20A12,12,0,0,0,8,39Z"/></svg></a></li>
+                       </ul>
+                   </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="s1">
+        <div class="bg-cover">
+
+        </div>
+        <div class="center">
+            <div class="boxoff">
+                <div class="txt-area">
+                    <p class="empty"></p>
+                    <h1>박스오피스</h1>
+                    <span>
+                            <a th:href="@{/movie}">
+                                <ul>
+                                    <li>더 많은 영화보기</li>
+                                    <li class="plus-icon"><svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M216,120H136V40a8,8,0,0,0-16,0v80H40a8,8,0,0,0,0,16h80v80a8,8,0,0,0,16,0V136h80a8,8,0,0,0,0-16Z"/></svg>
+                                    </li>
+                                </ul>
+
+                            </a>
+                        </span>
+                </div>
+                <div class="movie-list">
+                    <ul>
+                        <li th:each="movie : ${topMovies}">
+                            <div class="movie-info">
+                                <a th:href="@{|/movie/detail/${movie.movieCode}|}">
+                                    <p class="rank" th:text="${movie.ranking}"></p>
+                                    <img th:src="${movie.posterUrl}" alt="${movie.title}">
+                                    <i class="age"
+                                       th:attr="style='background: url(' +
+    ${movie.age == 'All' ? '/img/ageAll.png' :
+    movie.age == '12' ? '/img/age12.png' :
+    movie.age == '15' ? '/img/age15.png' :
+    movie.age == '18' ? '/img/age18.png' : ''} + '); background-size: 28px 28px; background-repeat: no-repeat; background-position: center;;'"
+                                       th:text="${movie.age}"></i>
+                                    <div class="summary">
+                                        <div class="story">
+                                            <p th:text="${movie.story}"></p>
+                                        </div>
+                                        <div class="gpa">
+                                            <p>관람평</p>
+                                            <p class="score" th:text="${movie.gpa != null ? T(java.lang.String).format('%.1f', movie.gpa / 10) : 'N/A'}"></p>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div>
+                            <div class="btn-box">
+                                <button type="button" class="like-btn" id="likeBtn">
+                                    <div class="like-img">
+                                        <img th:src="@{img/toggle-like-icon2.png}">
+                                    </div>
+                                    <span>like</span>
+                                </button>
+                                <div class="res-btn">
+                                    <a th:href="@{/reservation}">
+                                        예매
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="quick-menu">
+                    <ul>
+                        <li>
+                            <form action="/movie" method="get">
+                                <div class="inputbox">
+                                    <input type="text" name="search" placeholder="영화명을 입력해 주세요" th:value="${search}"/>
+                                    <button type="submit">
+                                        <img th:src="@{/img/search-white-icon.png}">
+                                    </button>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="mypage">
+                            <a th:href="@{/mypage}">
+                                <img th:src="@{/img/myhome-icon.png}">
+                                <p>마이페이지</p></a>
+                        </li>
+                        <li>
+                            <a th:href="@{/movie}"><svg class="feather feather-film" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="2.18" ry="2.18" width="20" x="2" y="2"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="2" x2="7" y1="7" y2="7"/><line x1="2" x2="7" y1="17" y2="17"/><line x1="17" x2="22" y1="17" y2="17"/><line x1="17" x2="22" y1="7" y2="7"/></svg>
+                                <p>박스오피스</p></a>
+                        </li>
+                        <li>
+                            <a th:href="@{/reservation}"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M366.05,146a46.7,46.7,0,0,1-2.42-63.42,3.87,3.87,0,0,0-.22-5.26L319.28,33.14a3.89,3.89,0,0,0-5.5,0l-70.34,70.34a23.62,23.62,0,0,0-5.71,9.24h0a23.66,23.66,0,0,1-14.95,15h0a23.7,23.7,0,0,0-9.25,5.71L33.14,313.78a3.89,3.89,0,0,0,0,5.5l44.13,44.13a3.87,3.87,0,0,0,5.26.22,46.69,46.69,0,0,1,65.84,65.84,3.87,3.87,0,0,0,.22,5.26l44.13,44.13a3.89,3.89,0,0,0,5.5,0l180.4-180.39a23.7,23.7,0,0,0,5.71-9.25h0a23.66,23.66,0,0,1,14.95-15h0a23.62,23.62,0,0,0,9.24-5.71l70.34-70.34a3.89,3.89,0,0,0,0-5.5l-44.13-44.13a3.87,3.87,0,0,0-5.26-.22A46.7,46.7,0,0,1,366.05,146Z" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="32"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" x1="250.5" x2="233.99" y1="140.44" y2="123.93"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" x1="294.52" x2="283.51" y1="184.46" y2="173.46"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" x1="338.54" x2="327.54" y1="228.49" y2="217.48"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" x1="388.07" x2="371.56" y1="278.01" y2="261.5"/></svg>
+                                <p>빠른예매</p></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="s2">
+        <div class="s2-bg"></div>
+        <div class="center">
+            <div class="txt-area2">
+                <h1>이벤트</h1>
+                <a th:href="@{/event}"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-2{fill:none;stroke:#351f66;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="plus"><line class="cls-2" x1="16" x2="16" y1="7" y2="25"/><line class="cls-2" x1="7" x2="25" y1="16" y2="16"/></g></svg></a>
+            </div>
+            <div class="banner">
+                <div class="left">
+                    <div class="slide">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide s2-slide">
+                                    <div class="slide-txt2">
+                                        <p>메가박스 오리지널 티켓</p>
+                                        <h3>ORIGINAL<br> TICKET</h3>
+                                        <i>메가박스가 제안하는<br><컨택트>를 가장 잘 간직하는 방법</i>
+                                    </div>
+                                    <img th:src="@{img/slide1.jpg}" alt="슬라이드">
+                                </div>
+                                <div class="swiper-slide s2-slide">
+                                    <div class="slide-txt2">
+                                        <p>메가박스 오리지널 티켓</p>
+                                        <h3>ORIGINAL<br> TICKET</h3>
+                                        <i>메가박스가 제안하는<br><컨택트>를 가장 잘 간직하는 방법</i>
+                                    </div>
+                                    <img th:src="@{img/slide2.jpg}" alt="슬라이드">
+                                </div>
+                                <div class="swiper-slide s2-slide">
+                                    <div class="slide-txt2">
+                                        <p>메가박스 오리지널 티켓</p>
+                                        <h3>ORIGINAL<br> TICKET</h3>
+                                        <i>메가박스가 제안하는<br><컨택트>를 가장 잘 간직하는 방법</i>
+                                    </div>
+                                    <img th:src="@{img/slide3.jpg}" alt="슬라이드">
+                                </div>
+                                <div class="swiper-slide s2-slide">
+                                    <div class="slide-txt2">
+                                        <p>메가박스 오리지널 티켓</p>
+                                        <h3>ORIGINAL<br> TICKET</h3>
+                                        <i>메가박스가 제안하는<br><컨택트>를 가장 잘 간직하는 방법</i>
+                                    </div>
+                                    <img th:src="@{img/slide4.jpg}" alt="슬라이드">
+                                </div>
+                            </div>
+                            <div class="swiper-button-next">
+                                <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+                            <div class="swiper-button-prev">
+                                <svg class="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="mini-ban">
+                        <div class="ban-1">
+                            <a th:href="@{/event}"><img th:src="@{img/mini-ban1.png}" alt="작은배너"></a>
+                        </div>
+                        <div class="ban-2">
+                            <a th:href="@{/event}"><img th:src="@{img/mini-ban2.jpg}" alt="작은배너"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <img th:src="@{img/big-banner.jpg}" alt="큰배너">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="s3">
+        <div class="center">
+            <div class="boxinfo">
+                <h1>메가박스 안내</h1>
+                <div class="swiper2 mySwiper2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image: url(img/theater1.jpg);">
+                            <a th:href="@{/theater/theater1}">
+                                <div class="slide-txt">
+                                    <p>서울</p>
+                                </div>
+                                <img th:src="@{img/theater1-gray.jpg}" alt="영화관-회색">
+                            </a>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url(img/theater2.jpg);">
+                            <a th:href="@{/theater/theater2}">
+                                <div class="slide-txt">
+                                    <p>경기</p>
+                                </div>
+                                <img th:src="@{img/theater2-gray.jpg}" alt="영화관-회색">
+                            </a>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url(img/theater3.jpg);">
+                            <a th:href="@{/theater/theater3}">
+                                <div class="slide-txt">
+                                    <p>인천</p>
+                                </div>
+                                <img th:src="@{img/theater3-gray.jpg}" alt="영화관-회색">
+                            </a>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url(img/theater4.jpg);">
+                            <a th:href="@{/theater/theater4}">
+                                <div class="slide-txt">
+                                    <p>대전/충청/세종</p>
+                                </div>
+                                <img th:src="@{img/theater4-gray.jpg}" alt="영화관-회색">
+                            </a>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url(img/theater5.png);">
+                            <a th:href="@{/theater/theater5}">
+                                <div class="slide-txt">
+                                    <p>부산/대구/경상</p>
+                                </div>
+                                <img th:src="@{img/theater5-gray.png}" alt="영화관-회색">
+                            </a>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url(img/theater6.jpg);">
+                            <a th:href="@{/theater/theater6}">
+                                <div class="slide-txt">
+                                    <p>광주/전라</p>
+                                </div>
+                                <img th:src="@{img/theater6-gray.jpg}" alt="영화관-회색">
+                            </a>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url(img/theater7.jpg);">
+                            <a th:href="@{/theater/theater7}">
+                                <div class="slide-txt">
+                                    <p>강원</p>
+                                </div>
+                                <img th:src="@{img/theater7-gray.jpg}" alt="영화관-회색">
+                            </a>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url(img/theater8.jpg);">
+                            <a th:href="@{/theater/theater8}">
+                                <div class="slide-txt">
+                                    <p>제주</p>
+                                </div>
+                                <img th:src="@{img/theater8-gray.jpg}" alt="영화관-회색">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next2">
+                        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="1" id="_1"><path d="M202.1,450a15,15,0,0,1-10.6-25.61L365.79,250.1,191.5,75.81A15,15,0,0,1,212.71,54.6l184.9,184.9a15,15,0,0,1,0,21.21l-184.9,184.9A15,15,0,0,1,202.1,450Z"/></g></svg>
+                    </div>
+                    <div class="swiper-button-prev2">
+                        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="1" id="_1"><path d="M353,450a15,15,0,0,1-10.61-4.39L157.5,260.71a15,15,0,0,1,0-21.21L342.39,54.6a15,15,0,1,1,21.22,21.21L189.32,250.1,363.61,424.39A15,15,0,0,1,353,450Z"/></g></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notice">
+            <div class="center">
+                <ul>
+                    <li th:each="board : ${topBoard}" th:if="${board.theater == '기가박스'}">
+                        <p class="board-theater" th:text="${board.theater}"></p>
+                        <a class="board-cont" th:href="@{|/support/detail/${board.id}|}">
+                            <p class="board-boardtype" th:text="${'['+board.boardtype+']'}"></p>
+                            <p class="board-subject" th:text="${board.subject}"></p>
+                        </a>
+                        <div class="board-util">
+                            <span class="board-date" th:text="${#temporals.format(board.createDate, 'yyyy.MM.dd')}"></span>
+                            <a class="more-btn" th:href="@{/support/support_list}">
+                                <p>더보기</p>
+                                <svg fill="none" height="12" stroke-width="1.5" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="center2">
+            <div class="info-icon">
+                <ul>
+                    <li>
+                        <a th:href="@{/user/login}">
+                            <img th:src="@{img/user-blue-icon.png}" alt="로그인">
+                            <p>로그인</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/event}">
+                            <img th:src="@{img/gift-blue.png}" alt="이벤트">
+                            <p>이벤트</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/store}">
+                            <img th:src="@{img/popcorn-blue.png}" alt="스토어">
+                            <p>스토어</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/support/home}">
+                            <img th:src="@{img/support-blue.png}" alt="고객센터">
+                            <p>고객센터</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/faq}">
+                            <img th:src="@{img/chat.png}" alt="자주묻는 질문">
+                            <p>자주 묻는 질문</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/qna/create}">
+                            <img th:src="@{img/talk.png}" alt="1:1문의">
+                            <p>1:1 문의</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="center">
+            <div class="top-area">
+                <div class="footer-nav">
+                    <ul>
+                        <li><a th:href="@{/}">회사소개</a></li>
+                        <li><a th:href="@{/}">인재채용</a></li>
+                        <li><a th:href="@{/}">광고문의</a></li>
+                        <li><a th:href="@{/}">이용약관</a></li>
+                        <li><a th:href="@{/}">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom-area">
+                <div class="logo">
+                    <img th:src="@{/img/logo-sample-gray.png}" alt="로고">
+                </div>
+                <address>
+                    인천광역시 서구 서곶로 284 (심곡동 새터빌딩) 4층 기가박스 ARS 1500-0000 대표이메일 giga1010@gigabox.co.kr<br> 대표자명 이진우 · 개인정보보호책임자 최지민 · 사업자등록번호 123-45-12345 · 통신판매업신고번호 2024-인천서구-0123<Br>
+                    COPYRIGHT © Gigabox, Inc. All rights reserved.
+                </address>
+                <div class="sns">
+                    <ul>
+                        <li><a th:href="@{/}">
+                            <img th:src="@{/img/youtube_icon.png}" alt="유튜브">
+                        </a></li>
+                        <li><a th:href="@{/}">
+                            <img th:src="@{/img/instagram_icon.png}" alt="인스타그램">
+                        </a></li>
+                        <li><a th:href="@{/}">
+                            <img th:src="@{/img/facebook_icon.png}" alt="페이스북">
+                        </a></li>
+                        <li><a th:href="@{/}">
+                            <img th:src="@{/img/kakao_talk_icon.png}" alt="카카오톡">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

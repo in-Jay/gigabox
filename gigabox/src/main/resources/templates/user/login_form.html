@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="signupForm">
+    <div class="center-40">
+        <div class="logo">
+            <img th:src="@{/img/logo-sample-purple.png}">
+        </div>
+        <h1>로그인</h1>
+        <div class="form">
+            <form th:action="@{/user/login}" method="post" id="loginForm" onsubmit="return valfn(this)">
+                <!-- 로그인 실패 시 알림 메시지 -->
+                <div th:if="${param.error}">
+                    <script type="text/javascript">
+                        alert('아이디 또는 비밀번호를 확인해 주세요.');
+                    </script>
+                </div>
+                <table>
+                    <tr>
+                        <th>아이디</th>
+                        <td>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="&nbsp;아이디">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호</th>
+                        <td>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="&nbsp;비밀번호">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="login_btns flex">
+                                <button type="submit" class="idbtn_log">로그인</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="login-abox flex">
+                <a th:href="@{/checkpass}">ID/PW 찾기</a>
+                <a th:href="@{/user/signup}">회원가입</a>
+                <a th:href="@{/support/home}">고객센터</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script layout:fragment="script" type="text/javascript">
+    function valfn(form){
+        let username = $("#username").val();
+        let password = $("#password").val();
+        $("#usernameError").text("");
+        $("#passwordError").text("");
+        if(!username || username == "") {
+            alert("아이디를 입력해 주세요");
+            return false;
+        }
+        if(!password || password == "") {
+            alert("비밀번호를 입력해 주세요");
+            return false;
+        }
+        form.submit();
+    }
+
+    // 로그인 페이지에서 해시 제거
+window.onload = function() {
+    if (window.location.hash) {
+        // 해시값 제거하고 페이지 리다이렉트
+        window.location.href = window.location.href.split('#')[0];
+    }
+};
+
+// 로그인 성공 후 원래 페이지로 리다이렉트
+// 예시로 로그인 성공 후, 원래 페이지로 돌아가기
+document.querySelector('form').onsubmit = function() {
+    const redirectUrl = window.location.href.split('#')[0]; // 해시 제거
+    window.location.href = redirectUrl;
+};
+</script>
+</body>
+</html>

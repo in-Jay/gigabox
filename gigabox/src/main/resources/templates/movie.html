@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="movie">
+    <div class="movie-wrap">
+        <div class="center">
+            <div class="movie-list">
+                <h1>박스오피스</h1>
+                <div class="movie-box">
+                    <div class="movie-box-util">
+                        <p><span th:text="${movieCount}"></span>개의 영화가 검색되었습니다.</p>
+                        <form action="/movie" method="get">
+                            <div class="input-box">
+                                <input type="text" name="search" placeholder="영화명 검색" th:value="${search}"/>
+                                <button type="submit"><img th:src="@{/img/search-icon.svg}"></button>
+                            </div>
+                        </form>
+                    </div>
+                    <ul>
+                        <li th:each="movie : ${movies}">
+                            <div class="movie-info">
+                                <a th:href="@{|/movie/detail/${movie.movieCode}|}">
+                                    <p class="rank" th:text="${movie.ranking}"></p>
+                                    <img th:src="${movie.posterUrl}" alt="${movie.title}">
+                                    <div class="story">
+                                        <p th:text="${movie.story}"></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="age-title">
+                                <i class="age"
+                                   th:attr="style='background: url(' +
+    ${movie.age == 'All' ? '/img/ageAll.png' :
+    movie.age == '12' ? '/img/age12.png' :
+    movie.age == '15' ? '/img/age15.png' :
+    movie.age == '18' ? '/img/age18.png' : ''} + '); background-size: 23px 23px; background-repeat: no-repeat; background-position: center;;'"
+                                   th:text="${movie.age}"></i>
+                                <p class="title" th:text="${movie.title}"></p>
+                            </div>
+                            <div class="rate-date">
+                                <span class="rate" th:text="'예매율 ' + ${movie.rate}"></span>
+                                <span class="date" th:text="${'개봉일&nbsp;' + movie.date}"></span>
+                            </div>
+                            <div class="btn-box">
+                                <form th:action="@{/movies/{movieCode}/like(movieCode=${movie.movieCode})}" method="post">
+                                    <button type="button" class="like-btn" id="likeBtn">
+                                        <div class="like-img">
+                                            <img th:src="@{img/toggle-like-icon.png}">
+                                        </div>
+                                        <span th:text="${movie.likes}"></span>
+                                    </button>
+                                </form>
+                                <div class="res-btn">
+                                    <a th:href="@{/reservation}">
+                                        예매
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,378 @@
+.seat-book {
+    width: 100%;
+    min-height:650px;
+}
+.seat-book .center {
+    margin: 50px auto;
+}
+
+.seat-book .center .reservationOuter {
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:top;
+}
+.seat-book .center .reservationOuter .seat-wrap {
+    width:70%;
+}
+.seat-book .center .reservationOuter .seat-wrap h2 {
+    margin-bottom: 20px;
+}
+.seat-book .center .reservationOuter .seat-wrap .seat_header {
+    width:100%;
+    height:450px;
+    border-top:1px solid #444;
+}
+.seat-book .center .reservationOuter .seat-wrap .seat_header .seat_title {
+    margin:10px 0;
+}
+
+.seat-book .center .reservationOuter .seat-wrap .seat_select {
+    width:100%;
+    height: 100%;
+    border:1px solid #ddd;
+
+}
+ #movie_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    color: #666;
+    box-sizing: border-box;
+}
+.reservation-inner {
+    width:100%;
+    height:50px;
+    background-color:#ddd;
+    justify-content:space-between;
+    padding: 0 100px;
+}
+.reservation-inner .number-input {
+    display: flex;
+    align-items: center;
+}
+
+.number-input label {
+    margin-right:20px;
+}
+.number-input input {
+    width: 60px;
+    height:32px;
+    text-align: center;
+    padding: 5px;
+    font-size: 16px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+}
+.number-input .btn-decrease,
+.number-input .btn-decrease2 {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.number-input .btn-increase,
+.number-input .btn-increase2 {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+.movieContainer select{
+    margin: 10px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 7px;
+    appearance: none;
+    border: 0;
+}
+
+        .movieContainer select option{
+
+            text-align: left;
+        }
+
+        .seat-box li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .small{
+            color: #777;
+            margin-left: 2px;
+        }
+
+        .showcase .seat:hover{
+            cursor: default;
+            scale: 1;
+        }
+
+        .showcase .selectedSeat:hover{
+            cursor: default;
+            scale: 1;
+        }
+
+        .screen{
+            background-color: #000;
+            margin-top: 34px;
+            margin-left: 50px;
+            margin-bottom: 15px;
+            padding: 5px;
+            width: 210px;
+            height: 71px;
+            box-shadow: 0 4px 19px rgb(243 251 96 / 70%);
+            transform: perspective(100px) rotateX(160deg);
+        }
+
+        .seat{
+            background-color: #444451;
+            width: 25px;
+            height: 22px;
+            margin: 3px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: pointer;
+        }
+
+        .seat_colNo {
+            width: 25px;
+            height: 22px;
+            margin: 3px;
+            font-weight: 700;
+            color:#333;
+        }
+
+        .seat_rowNo {
+            width: 25px;
+            height: 22px;
+            margin: 3px;
+            font-weight: 700;
+            color:#333;
+        }
+
+        .seat_colBlank {
+            width:25px;
+            height: 22px;
+            margin-right: 13px;
+        }
+
+        .availableSeat{
+            background-color: #444451;
+            width: 15px;
+            height: 12px;
+            margin: 3px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: default;
+        }
+
+        .selectedSeatIcon{
+            background-color: #6feaf6;
+            width: 15px;
+            height: 12px;
+            margin: 3px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: default;
+        }
+
+        .seat:hover{
+            scale: 1.2;
+        }
+
+        .selectedSeat:hover{
+            scale: 1.2;
+        }
+
+        .selectedSeat{
+            background-color: #6feaf6;
+            width: 25px;
+            height: 22px;
+            margin: 3px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: pointer;
+        }
+
+        .blank {
+            width:15px;
+            height:12px;
+            margin:3px;
+        }
+
+        .occupiedSeat{
+            background-color: #ff4f4f;
+            width: 25px;
+            height: 22px;
+            margin: 3px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            pointer-events : none;
+        }
+
+        .occupiedSeatIcon {
+            background-color: #ff4f4f;
+            width: 15px;
+            height: 12px;
+            margin: 3px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .row{
+            display: flex;
+            margin-left: -12px;
+        }
+
+        .text{
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        #count{
+            color: #6feaf6;
+        }
+
+        #costs{
+            color: #6feaf6;
+        }
+        .seatError_blank {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            cursor: initial;
+        }
+
+        .seatError {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ff4e4e;
+            text-align: center;
+            margin-top: 20px;
+            cursor: initial;
+        }
+.occupiedSeat {
+     background-color: #ff4f4f;
+     width: 25px;
+     height: 22px;
+     margin: 3px;
+     border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
+     pointer-events: none;
+}
+.seatMemory li { display: none }
+.totalreservation {
+    width:30%;
+    height: 550px;
+    border-radius:10px;
+    background-color:#333;
+    margin-left:30px;
+    position:relative;
+    display:flex;
+    flex-flow: column nowrap;
+    overflow:hidden;
+}
+.totalreservation #reservationDetails2 {
+    margin: 30px 30px 20px;
+}
+.totalreservation #reservationDetails2 table {
+    color:#ccc;
+    font-size:14px;
+    width:100%;
+}
+.totalreservation #reservationDetails2 tr {
+    width:100%;
+}
+.totalreservation #reservationDetails2 tr:first-child td {
+    font-size:16px;
+    color:#eee;
+    padding-bottom:10px;
+    border-bottom:1px solid #aaa;
+}
+.totalreservation #reservationDetails2 table img {
+    margin-top:10px;
+    width: 60px;
+}
+.totalreservation #reservationDetails2 div {
+    display: flex;
+    flex-flow:row nowrap;
+    align-items:center;
+    color: #ccc;
+    margin: 5px 0;
+}
+.totalreservation #reservationDetails2 div span{
+    font-size:14px;
+    margin-right:20px;
+    display:inline-block;
+}
+.totalreservation #reservationDetails2 div p{
+    display:inline-block;
+    color: #ccc;
+    font-size:14px;
+}
+.seat-state {
+    height:50px;
+    background-color:rgba(218,218,218,0.6);
+    border-radius:5px;
+    padding: 6px 10px;
+    margin:0 30px;
+
+}
+.seat-state .showcase{
+    display: flex;
+    flex-flow:row nowrap;
+    align-items:center;
+    justify-content:center;
+    margin: 0 auto;
+}
+.seat-state .showcase li {
+    display: flex;
+    flex-flow:column nowrap;
+    align-items:center;
+    margin:0 10px;
+}
+.seat-btn {
+    width:100%;
+    height:40px;
+    position:absolute;
+    bottom:0;
+    display:flex;
+    flex-flow:row nowrap;
+}
+.seat-btn button {
+    width: 50%;
+    height:100%;
+    border:none;
+    background-color: #555;
+    color:#fff;
+    font-size:16px;
+}
+.seat-btn #submitSeats {
+    background-color: #14b9cb;
+    width:50%;
+    height:100%;
+    color:#fff;
+}

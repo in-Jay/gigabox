@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Where Stories Live, 기가박스</title>
+</head>
+<body>
+<div layout:fragment="content" class="myhome">
+    <div class="center">
+        <div class="boardlist">
+            <div class="support-list">
+                <div class="list-title">
+                    <a th:href="@{/mypage}">
+                        <p>나의 기가박스</p>
+                    </a>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><a th:href="@{/reservation/final}">
+                            <p>영화 예매내역</p>
+                        </a></li>
+                        <li><a th:href="@{/cart/cart}">
+                            <p>스토어 구매내역</p>
+                        </a></li>
+                        <li><a th:href="@{/qna/list}">
+                            <p>나의 문의내역</p>
+                        </a></li>
+                        <li><a th:href="@{/user/verify}">
+                            <p>회원정보</p>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="list-info">
+
+                </div>
+            </div>
+        </div>
+        <div class="home-wrap">
+            <div class="home-cont">
+                <div class="user-img">
+                    <img th:src="@{/img/welcome_icon.png}">
+                </div>
+                <div class="welcome-txt">
+                    <h1>안녕하세요,</h1>
+                    <h1 th:text="${realname} + '님 환영합니다!'"></h1>
+                    <div class="welcome-abox">
+                        <ul>
+                            <li><a th:href="@{/user/verify}">비밀번호 변경</a></li>
+                            <li><a th:href="@{/user/verify}">고객센터</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="notice-box">
+                <div class="notice-left">
+                    <div class="notice-title">
+                        <h3>영화 예매내역</h3>
+                        <a th:href="@{/reservation/final}">더보기<i><img th:src="@{/img/right-arrow-icon.svg}"></i></a>
+                    </div>
+                    <table>
+                        <tr th:each="reservation:${recentReservation}">
+                            <th class="note-title">
+                                <b><a th:href="@{/reservation/final}" th:text="${reservation.resmovie}"></a></b>
+                            </th>
+                            <td>
+                                <span th:text="${reservation.date}"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="notice-right">
+                    <div class="notice-title">
+                        <h3>나의 문의내역</h3>
+                        <a th:href="@{/qna/list}">더보기<i><img th:src="@{/img/right-arrow-icon.svg}"></i></a>
+                    </div>
+                    <table>
+                        <tr th:each="qna:${recentQna}">
+                            <th class="note-title">
+                                <b><a th:href="@{/qna/list}" th:text="${qna.subject}"></a></b>
+                            </th>
+                            <td>
+                                <span th:text="${#temporals.format(qna.createDate, 'yyyy-MM-dd')}"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
