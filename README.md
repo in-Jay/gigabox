@@ -1,5 +1,5 @@
 # 영화 예매 및 굿즈 판매 홈페이지
-[MEGABOX](https://www.megabox.co.kr/?NaPm=ct%3Dm9zn011t%7Cci%3Dcheckout%7Ctr%3Dds%7Ctrx%3Dnull%7Chk%3Dda178c1814fed8dbb20714e5f5a716b44f7a913b) 홈페이지를 따라 영화 예매 및 굿즈 판매 홈페이지를 제작하였습니다.
+[MEGABOX](https://www.megabox.co.kr/?NaPm=ct%3Dm9zn011t%7Cci%3Dcheckout%7Ctr%3Dds%7Ctrx%3Dnull%7Chk%3Dda178c1814fed8dbb20714e5f5a716b44f7a913b) 홈페이지를 따라 영화 예매 및 굿즈 판매 홈페이지를 제작하였습니다. <br><br>
 
 ## 프로젝트 목표
 - 데이터 크롤링을 통해 영화 정보를 받아오고, 네이버 API를 사용하여 영화 관련 굿즈를 받아와서 홈페이지를 제작했습니다.
