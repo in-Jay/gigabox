@@ -28,27 +28,35 @@
 ## 홈페이지 이미지
 
 **메인 페이지**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/281ecc57-cee7-4b0d-8d65-ebbcb83ab734)
 <br><br><br>
 **영화 리스트**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/46346ee7-c5bb-48c6-a1eb-26db28f9adbc)
 <br><br><br>
 **영화 검색 페이지**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/6a6f0496-f72e-453e-8843-ee4e7b5ab490)
 <br><br><br>
 **영화 상세페이지**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/267205b7-22de-4148-a3d8-2fdf558782c0)
 ![Image](https://github.com/user-attachments/assets/35c69af6-667c-4418-9b23-e2da037d7d89)
 <br><br><br>
 **고객센터 메인 페이지**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/eba5955e-7dfe-4553-94a7-f5e456b5235d)
 <br><br><br>
 **자주 묻는 질문**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/723999be-f9af-42ec-b6c2-c16196b01b40)
 <br><br><br>
 **공지사항**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/56341364-16f4-4cb2-a3df-5dc1a790b5cf)
 <br><br><br>
 **1:1 문의**
+<br><br>
 ![Image](https://github.com/user-attachments/assets/2b93ca77-b011-4871-a248-d08d1be818a8)
 ![Image](https://github.com/user-attachments/assets/ffdd9081-e0ec-4e20-b383-a0a38ab668c6)
