@@ -25,7 +25,8 @@
 - HTML
 - CSS
 
-## 홈페이지
+## 홈페이지 이미지
+
 - 메인 페이지
 ![Image](https://github.com/user-attachments/assets/281ecc57-cee7-4b0d-8d65-ebbcb83ab734)
 
