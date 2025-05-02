@@ -230,6 +230,10 @@ public class MovieService {
 
     // 중복 체크 및 저장/업데이트 메서드
     private void saveAllMovies(List<Movie> moviesList) {
+
+        movieRepository.resetAllRankings();
+        movieRepository.resetAllRates();
+
         for (Movie movie : moviesList) {
             Optional<Movie> existingMovie = movieRepository.findByMovieCode(movie.getMovieCode());
 
@@ -265,14 +269,14 @@ public class MovieService {
 
     public List<Movie> getHighRank(int count) {
         // PageRequest.of(0, count) - 첫 번째 페이지부터 시작하고, count만큼의 영화 리스트를 가져옵니다.
-        Pageable pageable = PageRequest.of(0, count, Sort.by(Sort.Order.asc("ranking")));  // ranking 내림차순 정렬
+        Pageable pageable = PageRequest.of(0, count, Sort.by(Sort.Order.asc("ranking")));
         return movieRepository.findTopMovies(pageable);  // 반환된 페이지 내용을 가져옴
     }
 
 
     // 제목에 단어가 포함된 영화를 찾는 메서드
     public List<Movie> searchMoviesByTitle(String title) {
-        return movieRepository.findByTitleContainingIgnoreCase(title, Sort.by(Sort.Order.asc("ranking")));
+        return movieRepository.findByTitleContainingIgnoreCase(title);
     }
 
 
